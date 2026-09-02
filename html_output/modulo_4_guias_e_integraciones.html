@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Módulo 4: Guías e Integraciones - Jules Documentation</title>
+    <style>
+@page {
+    size: A4;
+    margin: 20mm 15mm 20mm 15mm;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #1f2937;
+    line-height: 1.6;
+    font-size: 10.5pt;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+.cover-page {
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    text-align: center;
+}
+
+.cover-title {
+    font-size: 28pt;
+    font-weight: 800;
+    color: #1a73e8;
+    margin-bottom: 15px;
+}
+
+.cover-subtitle {
+    font-size: 16pt;
+    color: #4b5563;
+    margin-bottom: 30px;
+}
+
+.cover-meta {
+    font-size: 11pt;
+    color: #6b7280;
+    border-top: 1px solid #e5e7eb;
+    padding-top: 15px;
+}
+
+.module-header {
+    border-bottom: 3px solid #1a73e8;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+}
+
+h1 {
+    color: #1a73e8;
+    font-size: 22pt;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+h2 {
+    color: #111827;
+    font-size: 15pt;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 6px;
+    margin-top: 25px;
+    margin-bottom: 12px;
+    page-break-after: avoid;
+}
+
+h3 {
+    color: #374151;
+    font-size: 12pt;
+    margin-top: 18px;
+    margin-bottom: 8px;
+    page-break-after: avoid;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+ul, ol {
+    margin-top: 0;
+    margin-bottom: 12px;
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 4px;
+}
+
+pre {
+    background-color: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-left: 4px solid #1a73e8;
+    border-radius: 4px;
+    padding: 10px 12px;
+    overflow-x: auto;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    font-size: 9pt;
+    line-height: 1.4;
+    color: #111827;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    white-space: pre-wrap;
+    word-break: break-all;
+    page-break-inside: avoid;
+}
+
+code {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    background-color: #f3f4f6;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 9pt;
+    color: #d97706;
+}
+
+pre code {
+    background-color: transparent;
+    padding: 0;
+    color: inherit;
+    font-size: inherit;
+}
+
+blockquote, .callout {
+    background-color: #eff6ff;
+    border-left: 4px solid #2563eb;
+    padding: 10px 14px;
+    margin: 12px 0;
+    border-radius: 0 4px 4px 0;
+    page-break-inside: avoid;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    font-size: 9.5pt;
+    page-break-inside: avoid;
+}
+
+th, td {
+    border: 1px solid #d1d5db;
+    padding: 8px 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f9fafb;
+    font-weight: 600;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 15px auto;
+}
+
+.toc-container {
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 15px 20px;
+    margin-bottom: 30px;
+    page-break-inside: avoid;
+}
+
+.toc-title {
+    font-size: 12pt;
+    font-weight: bold;
+    color: #1f2937;
+    margin-bottom: 10px;
+}
+
+.toc-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.toc-list li {
+    margin-bottom: 6px;
+}
+
+.toc-list a {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+.page-break {
+    page-break-before: always;
+}
+
+.footer-note {
+    margin-top: 40px;
+    padding-top: 15px;
+    border-top: 1px solid #e5e7eb;
+    font-size: 8.5pt;
+    color: #9ca3af;
+    text-align: center;
+}
+</style>
+</head>
+<body>
+
+    <div class="cover-page">
+        <div class="cover-title">Documentación Oficial de Jules</div>
+        <div class="cover-subtitle">Módulo 4: Guías e Integraciones</div>
+        <div class="cover-meta">
+            Google Jules Agent Docs<br>
+            Fuente: https://jules.google/docs
+        </div>
+    </div>
+
+    <div class="toc-container">
+        <div class="toc-title">Tabla de Contenido</div>
+        <ul class="toc-list">
+            <li><a href="#page-1">1. Continuous AI Overview</a></li>
+            <li><a href="#page-2">2. Integrations</a></li>
+            <li><a href="#page-3">3. Render Integration</a></li>
+        </ul>
+    </div>
+
+    <div class="content-body">
+
+        <div class="page-container " id="page-1">
+            <div class="module-header">
+                <h2>Continuous AI Overview</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/guides/continuous-ai-overview</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Continuous AI Overview</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <video preload="none" poster="https://firebasestorage.googleapis.com/v0/b/aida-async-workflow.firebasestorage.app/o/media%2FJULES001_LAUNCH_PROACTIVITY%2Fposter.png?alt=media" src="https://firebasestorage.googleapis.com/v0/b/aida-async-workflow.firebasestorage.app/o/media%2FJULES001_LAUNCH_PROACTIVITY%2Fvideo.mp4?alt=media" controls=""></video>
+<p>Last week, we shipped <strong>Continuous AI</strong> at Jules. This is a massive shift in how you’re going to work with Jules moving forward.</p>
+<p>We’ve added three key features that turn Jules from a tool you use into a system that works for you. Here’s the breakdown:</p>
+<h3 id="suggested-tasks">Suggested Tasks</h3>
+<p>Stop hunting through your codebase for that one <code dir="auto">// TODO</code> you forgot about.</p>
+<p><img src="https://jules.google/docs/_astro/suggested-tasks.1TOSQ67f_kPgO1.webp" alt="Suggested Tasks" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="675"></p>
+<p>When you toggle the <strong>Suggested Task</strong> switch, Jules analyzes your entire codebase to find those floating comments and surfaces them as actionable tasks right in your dashboard.</p>
+<p>Jules finds these tasks and analyzes them in context, providing a rationale for the change, and even giving you a confidence score on making that change independently. You can kick off multiple tasks in parallel and watch your to-do list shrink in real-time.</p>
+<p><strong>Pro-Tip:</strong> If you enable this and don’t see any suggestions, it just means you’re too organized! To get things moving, write a prompt asking Jules to analyze and raise specific inline to-dos. Once that’s committed, Jules will surface those new tasks automatically.</p>
+<h3 id="scheduled-tasks">Scheduled Tasks</h3>
+<p>This might be my personal favorite. <strong>Scheduled Tasks</strong> allow you to write a prompt and set it to run on a daily, weekly, or monthly interval.</p>
+<p><img src="https://jules.google/docs/_astro/scheduled-tasks.C8CPiSJL_Z1HTQeS.webp" alt="Scheduled Tasks" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="675"></p>
+<p>This unlocks some incredible use cases for CI/CD. We’ve all been there: a build breaks, and you have to drop everything to fix it. Now, you can run those builds on a schedule, and if something breaks, Jules can step in and fix it for you.</p>
+<p>In the video you’ll see that I scheduled a task that creates a nightly release to NPM for a library. In the past, when it’s been broken, Jules caught it, figured out the fix, and published it under the nightly tag.</p>
+<h3 id="render-integration">Render Integration</h3>
+<p>To close the loop on Continuous AI, you need a tight feedback loop. That’s why we’ve integrated Jules with <strong>Render</strong>.</p>
+<p><img src="https://jules.google/docs/_astro/changelog-render.D9zwsE_A_ae4TR.webp" alt="Render" loading="lazy" decoding="async" fetchpriority="auto" width="2400" height="1350"></p>
+<p>Render is a fantastic cloud platform for hosting web services, and it has a great integration with GitHub that creates preview deployments for PRs. But sometimes, those builds fail.</p>
+<p>Now, when a build fails on Render, it automatically reports that failure back to Jules. Jules then analyzes the error, works on a fix, and sends a commit back to your PR—which triggers a fresh, successful redeploy. It’s an automated loop that keeps your deployment pipeline moving without manual intervention.</p>
+<h3 id="the-big-picture">The Big Picture</h3>
+<p>When you combine <strong>Suggested Tasks</strong>, <strong>Scheduled Tasks</strong>, and the <strong>Render Integration</strong>, you aren’t just using an AI assistant anymore. You’re building a continuous system for your apps, websites, and libraries.</p>
+<p>We are incredibly excited to see how you use these new features to keep your code moving.</p>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-2">
+            <div class="module-header">
+                <h2>Integrations</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/integrations/</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Integrations</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content"> <p>Jules works best when it has the same context you do. By connecting your external tools, you enable Jules to autonomously detect bugs, read build logs, and understand project requirements without manual input.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="deployment--cicd">Deployment &amp; CI/CD</h2><a class="sl-anchor-link" href="#deployment--cicd"><span aria-hidden="true" class="sl-anchor-icon"></span><span class="sr-only">Section titled “Deployment &amp; CI/CD”</span></a></div>
+<p>Connect your deployment pipelines to let Jules automatically detect build failures and propose fixes.</p>
+<div class="sl-link-card astro-mf7fz2mj"> <span class="sl-flex stack astro-mf7fz2mj"> <a href="https://jules.google/docs/integrations/render" > <span class="title astro-mf7fz2mj">Render</span> </a> <span class="description astro-mf7fz2mj">Automatically retrieve build logs and fix deployment failures. Jules watches for failed builds, analyzes the logs, and pushes fixes directly to Jules' PRs.</span> </span>  </div>
+<div class="sl-heading-wrapper level-h2"><h2 id="how-integrations-work">How Integrations Work</h2><a class="sl-anchor-link" href="#how-integrations-work"><span aria-hidden="true" class="sl-anchor-icon"></span><span class="sr-only">Section titled “How Integrations Work”</span></a></div>
+<p>Jules uses <strong>scoped access</strong> to interact with your tools. When you connect an integration:</p>
+<ol>
+<li><strong>Read-Only by default:</strong> Unless otherwise specified, Jules requests the minimum permissions needed to read logs or status updates.</li>
+<li><strong>Autonomous triggers:</strong> Integrations allow Jules to wake up based on external events (like a failed web hook) rather than waiting for you to type a prompt.</li>
+<li><strong>Secure storage:</strong> API keys are encrypted and stored securely. They are never exposed in the chat interface or shared between sessions.</li>
+</ol> </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-3">
+            <div class="module-header">
+                <h2>Render Integration</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/integrations/render</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Render Integration</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content"> <p>Turn deployment failures into instant fixes. By connecting Jules to Render, you empower it to watch your builds, analyze errors, and push fixes before you even switch context.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="prerequisites">Prerequisites</h2><a class="sl-anchor-link" href="#prerequisites"><span aria-hidden="true" class="sl-anchor-icon"></span><span class="sr-only">Section titled “Prerequisites”</span></a></div>
+<p>Before generating your API key, ensure your Render and GitHub environments are ready:</p>
+<ol>
+<li><strong>Enable Pull Request Previews:</strong> Go to your Render dashboard and <a href="https://render.com/docs/service-previews?utm_source=jules#pull-request-previews-git-backed">enable Pull Request Previews</a>.</li>
+<li><strong>Verify GitHub Permissions:</strong> Check your <a href="https://github.com/settings/installations">GitHub Installations</a>.
+<ul>
+<li>Locate <strong>Google Labs Jules</strong>.</li>
+<li>If you see a <strong>Review Request</strong> link next to it, click it to accept the updated permissions.</li>
+<li>If there is no link, your permissions are already up to date.</li>
+</ul>
+</li>
+</ol>
+<div class="sl-heading-wrapper level-h2"><h2 id="setup">Setup</h2><a class="sl-anchor-link" href="#setup"><span aria-hidden="true" class="sl-anchor-icon"></span><span class="sr-only">Section titled “Setup”</span></a></div>
+<ol role="list" class="sl-steps">
+<li>
+<p><strong>Provision a Key</strong>
+Navigate to the <a href="https://dashboard.render.com?utm_source=jules">Render Dashboard</a>. Click the <strong>Help menu</strong> (top-right) and select <strong>Coding Agents</strong> to open the provisioning screen.</p>
+<p><em>Alternatively, visit <a href="https://dashboard.render.com/jules?utm_source=jules">dashboard.render.com/jules</a> directly.</em></p>
+</li>
+<li>
+<p><strong>Create the Key</strong>
+Click <strong>Create API key</strong>. Copy the key displayed.</p>
+<div class="api-note api-note-note astro-fp5tpre7"> <p>This key is shown only once. If you lose it, you will need to provision a new one.</p> </div>
+</li>
+<li>
+<p><strong>Connect to Jules</strong>
+In Jules, go to <a href="https://jules.google.com/settings/integrations">Settings &gt; Integrations</a>. Paste the key into the Render field and submit.</p>
+</li>
+</ol>
+<div class="sl-heading-wrapper level-h2"><h2 id="automated-fixes">Automated Fixes</h2><a class="sl-anchor-link" href="#automated-fixes"><span aria-hidden="true" class="sl-anchor-icon"></span><span class="sr-only">Section titled “Automated Fixes”</span></a></div>
+<p>Once connected, Jules automatically monitors the Pull Requests <strong>it creates</strong> for build failures.</p>
+<ol>
+<li><strong>Jules creates a PR:</strong> When you accept a plan, Jules opens a Pull Request with the changes.</li>
+<li><strong>Detection:</strong> If the Render build for that PR fails, Jules automatically analyzes the logs.</li>
+<li><strong>Resolution:</strong> Jules writes a fix and pushes a new commit to the same branch.</li>
+<li><strong>Merge:</strong> You review the fix just like any other change and merge when ready.</li>
+</ol>
+<div class="api-note api-note-note astro-fp5tpre7"> <p>Jules currently only monitors and fixes build failures on Pull Requests created by Jules. It does not automatically debug failures on PRs created by you or other team members.</p> </div>  </div>   </div> </div>
+        </div>
+
+    </div>
+
+    <div class="footer-note">
+        Documentación de Jules Agent - Módulo 4: Guías e Integraciones
+    </div>
+
+</body>
+</html>

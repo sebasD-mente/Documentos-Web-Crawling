@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Módulo 3: Herramientas CLI de Jules (Jules Tools) - Jules Documentation</title>
+    <style>
+@page {
+    size: A4;
+    margin: 20mm 15mm 20mm 15mm;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #1f2937;
+    line-height: 1.6;
+    font-size: 10.5pt;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+.cover-page {
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    text-align: center;
+}
+
+.cover-title {
+    font-size: 28pt;
+    font-weight: 800;
+    color: #1a73e8;
+    margin-bottom: 15px;
+}
+
+.cover-subtitle {
+    font-size: 16pt;
+    color: #4b5563;
+    margin-bottom: 30px;
+}
+
+.cover-meta {
+    font-size: 11pt;
+    color: #6b7280;
+    border-top: 1px solid #e5e7eb;
+    padding-top: 15px;
+}
+
+.module-header {
+    border-bottom: 3px solid #1a73e8;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+}
+
+h1 {
+    color: #1a73e8;
+    font-size: 22pt;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+h2 {
+    color: #111827;
+    font-size: 15pt;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 6px;
+    margin-top: 25px;
+    margin-bottom: 12px;
+    page-break-after: avoid;
+}
+
+h3 {
+    color: #374151;
+    font-size: 12pt;
+    margin-top: 18px;
+    margin-bottom: 8px;
+    page-break-after: avoid;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+ul, ol {
+    margin-top: 0;
+    margin-bottom: 12px;
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 4px;
+}
+
+pre {
+    background-color: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-left: 4px solid #1a73e8;
+    border-radius: 4px;
+    padding: 10px 12px;
+    overflow-x: auto;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    font-size: 9pt;
+    line-height: 1.4;
+    color: #111827;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    white-space: pre-wrap;
+    word-break: break-all;
+    page-break-inside: avoid;
+}
+
+code {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    background-color: #f3f4f6;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 9pt;
+    color: #d97706;
+}
+
+pre code {
+    background-color: transparent;
+    padding: 0;
+    color: inherit;
+    font-size: inherit;
+}
+
+blockquote, .callout {
+    background-color: #eff6ff;
+    border-left: 4px solid #2563eb;
+    padding: 10px 14px;
+    margin: 12px 0;
+    border-radius: 0 4px 4px 0;
+    page-break-inside: avoid;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    font-size: 9.5pt;
+    page-break-inside: avoid;
+}
+
+th, td {
+    border: 1px solid #d1d5db;
+    padding: 8px 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f9fafb;
+    font-weight: 600;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 15px auto;
+}
+
+.toc-container {
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 15px 20px;
+    margin-bottom: 30px;
+    page-break-inside: avoid;
+}
+
+.toc-title {
+    font-size: 12pt;
+    font-weight: bold;
+    color: #1f2937;
+    margin-bottom: 10px;
+}
+
+.toc-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.toc-list li {
+    margin-bottom: 6px;
+}
+
+.toc-list a {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+.page-break {
+    page-break-before: always;
+}
+
+.footer-note {
+    margin-top: 40px;
+    padding-top: 15px;
+    border-top: 1px solid #e5e7eb;
+    font-size: 8.5pt;
+    color: #9ca3af;
+    text-align: center;
+}
+</style>
+</head>
+<body>
+
+    <div class="cover-page">
+        <div class="cover-title">Documentación Oficial de Jules</div>
+        <div class="cover-subtitle">Módulo 3: Herramientas CLI de Jules (Jules Tools)</div>
+        <div class="cover-meta">
+            Google Jules Agent Docs<br>
+            Fuente: https://jules.google/docs
+        </div>
+    </div>
+
+    <div class="toc-container">
+        <div class="toc-title">Tabla de Contenido</div>
+        <ul class="toc-list">
+            <li><a href="#page-1">1. Jules Tools Reference</a></li>
+            <li><a href="#page-2">2. Practical Examples &amp; Scripting</a></li>
+        </ul>
+    </div>
+
+    <div class="content-body">
+
+        <div class="page-container " id="page-1">
+            <div class="module-header">
+                <h2>Jules Tools Reference</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/cli/reference</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div style="display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 1rem;"><h1 id="_top" >Jules Tools Reference</h1></div>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content"> <p>Jules Tools is a lightweight command-line interface (CLI) for interacting with Jules, Google’s autonomous AI coding agent. It allows you to manage coding sessions, inspect progress, and integrate Jules into your existing development workflows and scripts directly from your terminal.</p>
+<p>Think of Jules Tools as both a command surface and a dashboard for your coding agent, designed to keep you in your flow without needing to switch to a web browser.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="installation">Installation</h2><a class="sl-anchor-link" href="#installation"><span aria-hidden="true" class="sl-anchor-icon"></span><span class="sr-only">Section titled “Installation”</span></a></div>
+<p>To get started, install the tool globally using npm or pnpm.</p>
+<div class="expressive-code"><link rel="stylesheet" href="https://jules.google/docs/_astro/ec.h0e1k.css"><script type="module" src="https://jules.google/docs/_astro/ec.0vx5m.js"></script><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">npm install -g @google/jules</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div></div></figure></div>
+<p>Once installed, the jules command will be available in your terminal.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="authentication">Authentication</h3><a class="sl-anchor-link" href="#authentication"><span aria-hidden="true" class="sl-anchor-icon"></span><span class="sr-only">Section titled “Authentication”</span></a></div>
+<p>Before you can use the tool, you must authenticate with your Google account.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="login">Login</h3><a class="sl-anchor-link" href="#login"><span aria-hidden="true" class="sl-anchor-icon"></span><span class="sr-only">Section titled “Login”</span></a></div>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">jules login</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div></div></figure></div>
+<p>This command will open a browser window to guide you through the Google authentication process.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="logout">Logout</h3><a class="sl-anchor-link" href="#logout"><span aria-hidden="true" class="sl-anchor-icon"></span><span class="sr-only">Section titled “Logout”</span></a></div>
+<p>To log out from your account:</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">jules logout</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div></div></figure></div>
+<div class="sl-heading-wrapper level-h2"><h2 id="usage">Usage</h2><a class="sl-anchor-link" href="#usage"><span aria-hidden="true" class="sl-anchor-icon"></span><span class="sr-only">Section titled “Usage”</span></a></div>
+<p>The CLI is built around commands and subcommands. You can get help for any command by using the -h or —help flag.</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#e1e4e8"># Get general help</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">jules help</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8"># Get help for a specific command (e.g., remote)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">jules remote --help</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div></div></figure></div>
+<div class="sl-heading-wrapper level-h3"><h3 id="global-flags">Global Flags</h3><a class="sl-anchor-link" href="#global-flags"><span aria-hidden="true" class="sl-anchor-icon"></span><span class="sr-only">Section titled “Global Flags”</span></a></div>
+<ul>
+<li>
+<p><code dir="auto">-h</code>, <code dir="auto">--help</code>: Displays help information for jules or a specific command.</p>
+</li>
+<li>
+<p><code dir="auto">--theme &lt;string&gt;</code>: Sets the theme for the terminal user interface (TUI). Options are <code dir="auto">dark</code> (default) or <code dir="auto">light</code>.</p>
+</li>
+</ul>
+<p>Example: <code dir="auto">jules --theme light</code></p>
+<div class="sl-heading-wrapper level-h3"><h3 id="available-commands">Available Commands</h3><a class="sl-anchor-link" href="#available-commands"><span aria-hidden="true" class="sl-anchor-icon"></span><span class="sr-only">Section titled “Available Commands”</span></a></div>
+<p><code dir="auto">version</code></p>
+<p>Shows the currently installed version of the Jules Tools CLI.</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">jules version</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div></div></figure></div>
+<p><code dir="auto">remote</code></p>
+<p>The <code dir="auto">remote</code> command is the primary way to interact with Jules sessions running in the cloud. It has several subcommands.</p>
+<p><code dir="auto">remote list</code>
+Lists your connected repositories or active sessions.</p>
+<ul>
+<li>
+<p><code dir="auto">--repo</code>: Flag to list all repositories connected to Jules.</p>
+</li>
+<li>
+<p><code dir="auto">--session</code>: Flag to list all your remote sessions.</p>
+</li>
+</ul>
+<p><em>Examples:</em></p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#e1e4e8"># List all connected repositories</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">jules remote list --repo</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8"># List all active and past sessions</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">jules remote list --session</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div></div></figure></div>
+<p><code dir="auto">remote new</code></p>
+<p>Creates a new remote session to delegate a task to Jules.</p>
+<p>Jules can automatically infer the repository from your current working directory, so you can often omit the <code dir="auto">--repo</code> flag.</p>
+<ul>
+<li>
+<p><code dir="auto">--repo &lt;repo_name&gt;</code>: Specifies the repository for the session (e.g., torvalds/linux or . for the current directory’s repo).</p>
+</li>
+<li>
+<p><code dir="auto">--session "&lt;prompt&gt;"</code>: A string describing the task for Jules to perform.</p>
+</li>
+<li>
+<p><code dir="auto">--parallel &lt;number&gt;</code>: Starts multiple parallel sessions to work on the same task.</p>
+</li>
+</ul>
+<p><em>Example:</em></p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext" tabindex="0" role="region"><code><div class="ec-line"><div class="code"><span style="--0:#e1e4e8"># Start a new session to write unit tests in the 'torvalds/linux' repo</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">jules remote new --repo torvalds/linux --session "write unit tests"</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div></div></figure></div>
+<p><code dir="auto">remote pull</code></p>
+<p>Pulls the results (e.g., code changes) from a completed session.</p>
+<ul>
+<li><code dir="auto">--session &lt;session_id&gt;</code>: The ID of the session you want to pull.</li>
+</ul>
+<p><em>Example:</em></p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#e1e4e8"># Pull the results for session ID 123456</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">jules remote pull --session 123456</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div></div></figure></div>
+<p><code dir="auto">completion</code></p>
+<p>Generates an autocompletion script for your shell (e.g., bash, zsh) to enable tab completion for jules commands.</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#e1e4e8"># Generate completion script for bash</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">jules completion bash</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div></div></figure></div>
+<div class="sl-heading-wrapper level-h2"><h2 id="interactive-dashboard-tui">Interactive Dashboard (TUI)</h2><a class="sl-anchor-link" href="#interactive-dashboard-tui"><span aria-hidden="true" class="sl-anchor-icon"></span><span class="sr-only">Section titled “Interactive Dashboard (TUI)”</span></a></div>
+<p>For a more interactive, visual experience, you can launch the Terminal User Interface (TUI) by running the jules command without any arguments.</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">jules</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div></div></figure></div>
+<p>The TUI provides a dashboard view of your sessions, a side-by-side diff viewer for reviewing changes, and guided flows for creating new ones, similar to the web UI.</p> </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-2">
+            <div class="module-header">
+                <h2>Practical Examples &amp; Scripting</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/cli/examples</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div style="display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 1rem;"><h1 id="_top" >Practical Examples &amp; Scripting</h1></div>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content"> <p>Jules Tools is designed to be scriptable and can be composed with other command-line tools.</p>
+<p>Below are some examples of Jules Tools in action:</p>
+<div class="video-container astro-sy3jr4f6"> <iframe src="https://www.youtube.com/embed/D_8ugbyW2eo" title="YouTube video player" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" >
+  </iframe> </div>
+<p><strong>1. Create sessions from a TODO.md file:</strong></p>
+<p>Assign each line item from a local TODO.md file as a new session in the current repository.</p>
+<div class="expressive-code"><link rel="stylesheet" href="https://jules.google/docs/_astro/ec.h0e1k.css"><script type="module" src="https://jules.google/docs/_astro/ec.0vx5m.js"></script><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">cat TODO.md | while IFS= read -r line; do</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8">  </span></span><span style="--0:#e1e4e8">jules remote new --repo . --session "$line"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">done</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div></div></figure></div>
+<p><strong>2. Create a session from a GitHub Issue:</strong></p>
+<p>Pipe the title of the first GitHub issue assigned to you directly into a new Jules session. (Requires the gh and jq CLIs).</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">gh issue list --assignee @me --limit 1 --json title \</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8">  </span></span><span style="--0:#e1e4e8">| jq -r '.[0].title' \</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8">  </span></span><span style="--0:#e1e4e8">| jules remote new --repo .</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div></div></figure></div>
+<p><strong>3. Use Gemini to analyze and assign the hardest issue to Jules:</strong>
+Use the Gemini CLI to analyze your assigned GitHub issues, identify the most tedious one, and pipe its title to Jules.</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext" tabindex="0" role="region"><code><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">gemini -p "find the most tedious issue, print it verbatim\n$(gh issue list --assignee @me)" \</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8">  </span></span><span style="--0:#e1e4e8">| jules remote new --repo .</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div></div></figure></div> </div>   </div> </div>
+        </div>
+
+    </div>
+
+    <div class="footer-note">
+        Documentación de Jules Agent - Módulo 3: Herramientas CLI de Jules (Jules Tools)
+    </div>
+
+</body>
+</html>
