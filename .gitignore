@@ -1,0 +1,6 @@
+gcp_docs_data.json
+*.html
+*.pdf
+test_inspect.py
+scraped_codelab.json
+__pycache__/
