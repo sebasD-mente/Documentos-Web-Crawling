@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Módulo 5: Registro de Cambios (Changelog) - Jules Documentation</title>
+    <style>
+@page {
+    size: A4;
+    margin: 20mm 15mm 20mm 15mm;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #1f2937;
+    line-height: 1.6;
+    font-size: 10.5pt;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+.cover-page {
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    text-align: center;
+}
+
+.cover-title {
+    font-size: 28pt;
+    font-weight: 800;
+    color: #1a73e8;
+    margin-bottom: 15px;
+}
+
+.cover-subtitle {
+    font-size: 16pt;
+    color: #4b5563;
+    margin-bottom: 30px;
+}
+
+.cover-meta {
+    font-size: 11pt;
+    color: #6b7280;
+    border-top: 1px solid #e5e7eb;
+    padding-top: 15px;
+}
+
+.module-header {
+    border-bottom: 3px solid #1a73e8;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+}
+
+h1 {
+    color: #1a73e8;
+    font-size: 22pt;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+h2 {
+    color: #111827;
+    font-size: 15pt;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 6px;
+    margin-top: 25px;
+    margin-bottom: 12px;
+    page-break-after: avoid;
+}
+
+h3 {
+    color: #374151;
+    font-size: 12pt;
+    margin-top: 18px;
+    margin-bottom: 8px;
+    page-break-after: avoid;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+ul, ol {
+    margin-top: 0;
+    margin-bottom: 12px;
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 4px;
+}
+
+pre {
+    background-color: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-left: 4px solid #1a73e8;
+    border-radius: 4px;
+    padding: 10px 12px;
+    overflow-x: auto;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    font-size: 9pt;
+    line-height: 1.4;
+    color: #111827;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    white-space: pre-wrap;
+    word-break: break-all;
+    page-break-inside: avoid;
+}
+
+code {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    background-color: #f3f4f6;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 9pt;
+    color: #d97706;
+}
+
+pre code {
+    background-color: transparent;
+    padding: 0;
+    color: inherit;
+    font-size: inherit;
+}
+
+blockquote, .callout {
+    background-color: #eff6ff;
+    border-left: 4px solid #2563eb;
+    padding: 10px 14px;
+    margin: 12px 0;
+    border-radius: 0 4px 4px 0;
+    page-break-inside: avoid;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    font-size: 9.5pt;
+    page-break-inside: avoid;
+}
+
+th, td {
+    border: 1px solid #d1d5db;
+    padding: 8px 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f9fafb;
+    font-weight: 600;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 15px auto;
+}
+
+.toc-container {
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 15px 20px;
+    margin-bottom: 30px;
+    page-break-inside: avoid;
+}
+
+.toc-title {
+    font-size: 12pt;
+    font-weight: bold;
+    color: #1f2937;
+    margin-bottom: 10px;
+}
+
+.toc-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.toc-list li {
+    margin-bottom: 6px;
+}
+
+.toc-list a {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+.page-break {
+    page-break-before: always;
+}
+
+.footer-note {
+    margin-top: 40px;
+    padding-top: 15px;
+    border-top: 1px solid #e5e7eb;
+    font-size: 8.5pt;
+    color: #9ca3af;
+    text-align: center;
+}
+</style>
+</head>
+<body>
+
+    <div class="cover-page">
+        <div class="cover-title">Documentación Oficial de Jules</div>
+        <div class="cover-subtitle">Módulo 5: Registro de Cambios (Changelog)</div>
+        <div class="cover-meta">
+            Google Jules Agent Docs<br>
+            Fuente: https://jules.google/docs
+        </div>
+    </div>
+
+    <div class="toc-container">
+        <div class="toc-title">Tabla de Contenido</div>
+        <ul class="toc-list">
+            <li><a href="#page-1">1. Changelog</a></li>
+            <li><a href="#page-2">2. Gemini 3.1 Pro is now available in Jules</a></li>
+            <li><a href="#page-3">3. Auto-Fixing CI Failures and configure Jules to commit as you</a></li>
+            <li><a href="#page-4">4. MCP support comes to Jules</a></li>
+            <li><a href="#page-5">5. Gemini 3 Flash is now the base model in Jules</a></li>
+            <li><a href="#page-6">6. Update Scheduled Tasks</a></li>
+            <li><a href="#page-7">7. REST API: Repoless, File Outputs, and Activity Filters</a></li>
+            <li><a href="#page-8">8. Jules now finds performance optimizations</a></li>
+            <li><a href="#page-9">9. Introducing the Planning Critic for Auto-Approved Plans</a></li>
+            <li><a href="#page-10">10. Automated fixes for Render deployments</a></li>
+            <li><a href="#page-11">11. Put routine maintenance on autopilot with Scheduled Tasks</a></li>
+            <li><a href="#page-12">12. Enable suggested tasks to let Jules find issues proactively</a></li>
+            <li><a href="#page-13">13. Start from scratch—instantly</a></li>
+            <li><a href="#page-14">14. Introducing Gemini 3 Pro</a></li>
+            <li><a href="#page-15">15. New Jules Tools CLI Updates: Side-by-Side Diffs, Repo Inference, and More</a></li>
+            <li><a href="#page-16">16. Introducing the Jules API</a></li>
+            <li><a href="#page-17">17. Jules in the command line</a></li>
+            <li><a href="#page-18">18. Use Environment Variables In Jules</a></li>
+            <li><a href="#page-19">19. Jules gains memory!</a></li>
+            <li><a href="#page-20">20. Tell Jules exactly what file to work on using file selector</a></li>
+            <li><a href="#page-21">21. Jules Acts on PR Feedback</a></li>
+            <li><a href="#page-22">22. All Hands on Deck!</a></li>
+            <li><a href="#page-23">23. Image upload</a></li>
+            <li><a href="#page-24">24. Stacked Diff</a></li>
+            <li><a href="#page-25">25. Improved Jules Critic</a></li>
+            <li><a href="#page-26">26. Jules Sample Prompts</a></li>
+            <li><a href="#page-27">27. Render images in the diff viewer</a></li>
+            <li><a href="#page-28">28. Increasing the VM Size to 20GB</a></li>
+            <li><a href="#page-29">29. Export at any time</a></li>
+            <li><a href="#page-30">30. Critic Agent</a></li>
+            <li><a href="#page-31">31. Interactive Plan</a></li>
+            <li><a href="#page-32">32. Jules can surf the web</a></li>
+            <li><a href="#page-33">33. Jules can test web-apps and show you the results</a></li>
+            <li><a href="#page-34">34. Jules is out of beta!</a></li>
+            <li><a href="#page-35">35. Environment snapshots for faster tasks</a></li>
+            <li><a href="#page-36">36. Open A PR directly from Jules</a></li>
+            <li><a href="#page-37">37. Added Bun runtime support</a></li>
+            <li><a href="#page-38">38. Improved task controls and other 💅 UI delight</a></li>
+            <li><a href="#page-39">39. Jules now listens to GitHub issues</a></li>
+            <li><a href="#page-40">40. Jules Agent Update: Faster, Smarter, More Reliable</a></li>
+            <li><a href="#page-41">41. Modernized base environment and updated toolchains</a></li>
+            <li><a href="#page-42">42. Customization and Efficiency Enhancements</a></li>
+            <li><a href="#page-43">43. A faster, smoother and more reliable Jules</a></li>
+            <li><a href="#page-44">44. Improving Stablity</a></li>
+            <li><a href="#page-45">45. Jules is here</a></li>
+        </ul>
+    </div>
+
+    <div class="content-body">
+
+        <div class="page-container " id="page-1">
+            <div class="module-header">
+                <h2>Changelog</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Changelog</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content"> <article class="changelog-entry astro-bd6alw26">  <p><img src="https://jules.google/docs/_astro/gemini-3.1-pro.wT0wXEsJ_24Bmue.webp" alt="gemini-3.1-pro" loading="lazy" decoding="async" fetchpriority="auto" width="2400" height="1350"></p>
+<p>Gemini 3.1 Pro is now available in Jules for Google Pro plan users. 3.1 Pro is a smarter, more capable baseline for complex problem-solving.</p>
+<p><img src="https://jules.google/docs/_astro/gemini-3.1-pro-web-app.R9NZfbbR_15qEba.webp" alt="gemini-3.1-pro-web-app" loading="lazy" decoding="async" fetchpriority="auto" width="3456" height="2160"></p>
+<p>This replaces Gemini 3 Pro as the default model for Pro users. Give it a try and let us know what you think.</p> </article><article class="changelog-entry astro-bd6alw26">  <video preload="none" poster="https://firebasestorage.googleapis.com/v0/b/aida-async-workflow.firebasestorage.app/o/media%2FJULESVC000_CI_FIXER%2Fposter.png?alt=media" src="https://firebasestorage.googleapis.com/v0/b/aida-async-workflow.firebasestorage.app/o/media%2FJULESVC000_CI_FIXER%2Fvideo.mp4?alt=media" controls=""></video>
+<h3 id="ci-fixer">CI Fixer</h3>
+<p>Jules now automatically detects and fixes CI failures on pull requests it creates. When a check fails in GitHub Actions, Jules receives the error, works through a fix, and resubmits the PR — all without manual intervention.</p>
+<p><img src="https://jules.google/docs/_astro/ci-fixer.DvE-FgVC_ZytKJW.webp" alt="ci-fixer" loading="lazy" decoding="async" fetchpriority="auto" width="1595" height="897"></p>
+<p>Previously, a failed CI check on a Jules PR would stall your workflow. Resolving it required setting up REST API calls or manually copy-pasting error logs back to Jules. CI Fixer closes that gap. Jules now operates in a loop — fixing, committing, and resubmitting — so your PRs keep moving forward.</p>
+<h3 id="commit-authoring">Commit Authoring</h3>
+<p>You can now control how commits from Jules are attributed on GitHub. Three authorship modes are available:</p>
+<ul>
+<li><strong>Jules:</strong> Jules is the sole author of all commits (default, existing behavior).</li>
+<li><strong>Co-authored (Jules + You or You + Jules):</strong> Commits are co-authored by both you and Jules, crediting both contributors.</li>
+<li><strong>User only:</strong> You are the sole author. Jules applies its changes under your identity.</li>
+</ul>
+<p><img src="https://jules.google/docs/_astro/authorship.BOAG-F4i_Ze7cTp.webp" alt="authorship" loading="lazy" decoding="async" fetchpriority="auto" width="1595" height="897"></p>
+<p>Previously, Jules authored every commit and PR, which meant your GitHub contribution graph didn’t reflect the work you initiated. Setting the commit authorship in to co-authored to you or you + Jules, makes it clear to contributors and PR reviewers who is driving each change.</p>
+<p>It applies at the user level across all repositories and all task types — scheduled, suggested, and manually triggered tasks.</p>
+<h4 id="setting-commit-authorship">Setting commit authorship</h4>
+<ol>
+<li>Go to the Jules Settings page</li>
+<li>Open the <strong>Commit Authoring</strong> section</li>
+<li>Select your preferred authorship mode</li>
+<li>All future sessions will use the selected attribution</li>
+</ol> </article><article class="changelog-entry astro-bd6alw26">  <p><img src="https://jules.google/docs/_astro/mcp-support.DfBfW7lh_Z2nUiOo.webp" alt="mcp-support" loading="lazy" decoding="async" fetchpriority="auto" width="512" height="288"></p>
+<p>Today we’re launching MCP Server support in Jules starting with: Linear, Stitch, Neon, Tinybird, Context7, and Supabase.</p>
+<p>Add a service connection in the Settings page and will trigger the MCP server tools in a session when it detects the need for a tool call.</p>
+<h3 id="getting-started">Getting started</h3>
+<p>Our MCP server integration uses API key authentication. To get started:</p>
+<ol>
+<li>Get the service’s API key (such as Linear or Stitch)</li>
+<li>Go to the Jules Settings page</li>
+<li>Click on the MCP section</li>
+<li>Plug in your API key for that specific service</li>
+<li>Kick off a new session</li>
+<li>Jules will trigger the MCP server tools when it detects the need for the call</li>
+</ol>
+<p><img src="https://jules.google/docs/_astro/mcp-settings.CdNqjk-x_9Rk2h.webp" alt="mcp-settings" loading="lazy" decoding="async" fetchpriority="auto" width="1728" height="1080"></p>
+<h3 id="focus-on-security">Focus on Security</h3>
+<p>It might seem odd for us to limit which MCP servers Jules can connect to. However, we are wanted to start with a focus on security. Jules operates within a cloud development environment connected to your GitHub repositories, so we prioritize a <strong>security-first</strong> approach to third-party integrations.</p>
+<p>By hand-selecting these initial servers, we can:</p>
+<ul>
+<li><strong>Validate Data Flow:</strong> We ensure that each server adheres to strict data-handling standards, keeping your source code and API keys isolated.</li>
+<li><strong>Audit Tool Permissions:</strong> We verify that each server only requests the specific permissions it needs to function, preventing “over-privileged” access to your environment.</li>
+<li><strong>Ensure Stability:</strong> A vetted integration means fewer connection drops and a more predictable experience when Jules interacts with your external data.</li>
+</ul>
+<p>We plan to expand this list as we work with more partners.</p>
+<h3 id="tell-us-what-to-add-next">Tell us what to add next</h3>
+<p>If you have an MCP server in mind, you can let us know in the settings panel what we should add next.</p> </article><article class="changelog-entry astro-bd6alw26">  <p><img src="https://jules.google/docs/_astro/gemini-3-flash@2x.Jb2wbw3a_yijHp.webp" alt="gemini-3-flash" loading="lazy" decoding="async" fetchpriority="auto" width="2400" height="1350"></p>
+<p>Today we’re launching Gemini 3 Flash in Jules for all users on all tiers.</p>
+<p>It’s our new base model that’s faster and significantly more capable than our previous base model, Gemini 2.5 Pro. If it feels like Jules feels like it had a double espresso, you now know why.</p>
+<p><img src="https://jules.google/docs/_astro/gemini-3-flash-web-app.sc6E0AWS_1pMh81.webp" alt="gemini-3-flash-web-app" loading="lazy" decoding="async" fetchpriority="auto" width="1728" height="1080"></p>
+<p>Give it a spin and let us know what you think.</p> </article><article class="changelog-entry astro-bd6alw26">  <p><img src="https://jules.google/docs/_astro/planning-critic.Dz2LCA1B_LH0sq.webp" alt="Planning Critic" loading="lazy" decoding="async" fetchpriority="auto" width="2050" height="1154"></p>
+<p>We’ve introduced a secondary agent—the Planning Critic—to review all plans that do not require human intervention. Before Jules executes a single line of code, this agent rigorously critiques and refines the proposed plan. While this adds a small amount of time to the planning phase, the result is a 9.5% reduction in task failure rates and significantly higher quality execution paths.</p> </article><article class="changelog-entry astro-bd6alw26">  <p><img src="https://jules.google/docs/_astro/performance.DQw6awj8_167lk0.webp" alt="performance" loading="lazy" decoding="async" fetchpriority="auto" width="1794" height="1086"></p>
+<p>Jules now surfaces Performance Optimizations Jules has expanded its detection capabilities.</p>
+<p>In addition to standard TODOs, Jules now proactively identifies performance optimizations within your code. These suggestions appear alongside your existing TODOs in the Suggested Tasks view, helping you catch bottlenecks and inefficiencies just as easily as you catch unfinished code.</p> </article><article class="changelog-entry astro-bd6alw26">  <div class="expressive-code"><link rel="stylesheet" href="https://jules.google/docs/_astro/ec.h0e1k.css"><script type="module" src="https://jules.google/docs/_astro/ec.0vx5m.js"></script><figure class="frame is-terminal not-content"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="shell"><code><div class="ec-line"><div class="code"><span style="--0:#E1E4E8">PROMPT_CONTENT</span><span style="--0:#F97583">=</span><span style="--0:#E1E4E8">$(</span><span style="--0:#B392F0">jq</span><span style="--0:#E1E4E8"> </span><span style="--0:#79B8FF">-Rs</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">.</span><span style="--0:#E1E4E8"> </span><span style="--0:#F97583">&lt;</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">my_prompt.md</span><span style="--0:#E1E4E8">)</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#B392F0">curl</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">'https://jules.googleapis.com/v1alpha/sessions'</span><span style="--0:#E1E4E8"> </span><span style="--0:#79B8FF">\</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#79B8FF">-X</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">POST</span><span style="--0:#E1E4E8"> </span><span style="--0:#79B8FF">\</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#79B8FF">-H</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">"Content-Type: application/json"</span><span style="--0:#E1E4E8"> </span><span style="--0:#79B8FF">\</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#79B8FF">-H</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">"x-goog-api-key: </span><span style="--0:#E1E4E8">$JULES_API_KEY</span><span style="--0:#9ECBFF">"</span><span style="--0:#E1E4E8"> </span><span style="--0:#79B8FF">\</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#79B8FF">-d</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">"{</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#79B8FF">\"</span><span style="--0:#9ECBFF">prompt</span><span style="--0:#79B8FF">\"</span><span style="--0:#9ECBFF">: </span><span style="--0:#E1E4E8">$PROMPT_CONTENT</span><span style="--0:#9ECBFF">,</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#79B8FF">\"</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div></div></figure></div>
+<h3 id="repoless-support-in-the-rest-api">Repoless support in the REST API</h3>
+<p>Repoless comes to the REST API and we think this has <strong>massive potential</strong>. A repoless session in a sense becomes serverless, because it creates an ephemeral cloud dev environment with Node, Python, Rust, Bun, and other runtimes preloaded on the image.</p>
+<p>The massive potential is that this serverless environment comes with an AI coding agent.</p>
+<p>With a single API call you can spawn a serverless dev environment with only the context in your prompt. When it’s done you can download the file outputs from the session.</p>
+<p>We can’t wait to see what you all do with this one.</p>
+<h3 id="get-the-entire-file-outputs-from-a-session">Get the entire file outputs from a session</h3>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext" tabindex="0" role="region"><code><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">┌──────────────────────────────────────────────────────────────────────────────┐</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">│  FILES CHANGED                                                               │</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">├──────────────────────────────────────────────────────────────────────────────┤</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">│  [M]  bun.lock                                            +567    -163       │</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">│  [A]  bunfig.toml                                           +2      -0       │</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">│  [M]  examples/simple/main.ts                               +2      -1       │</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">│  [M]  packages/core/src/client.ts                          +21      -6       │</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">│  [M]  packages/core/src/network/adapter.ts                 +46     -13       │</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">│  [A]  packages/core/src/retry-utils.ts                     +89      -0       │</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">│  [M]  packages/core/src/sources.ts                          +2      -0       │</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">│  [M]  packages/core/src/streaming.ts                       +15     -51       │</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">│  [M]  packages/core/src/types.ts                           +12      -0       │</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">│  [M]  packages/core/tests/automated_session.test.ts       +125      -0       │</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">│  [M]  packages/core/tests/network/adapter.test.ts         +109      -0       │</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">│  [A]  packages/core/tests/retry-utils.test.ts             +140      -0       │</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">│  [M]  packages/core/tests/sources.test.ts                  +21      -0       │</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">├──────────────────────────────────────────────────────────────────────────────┤</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">│  Summary: 13 files changed                        +1,151 insertions, -234    │</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">└──────────────────────────────────────────────────────────────────────────────┘</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8">  </span></span><span style="--0:#e1e4e8">Session finished: completed</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div></div></figure></div>
+<p>Speaking of file outputs, we just made that a lot easier. When a session completes a task, you can now get the entire change set.</p>
+<p>This is stored in a git patch format for parsing changes such as additions, modifications, and deletions.</p>
+<h3 id="timestamp-based-filters-for-session-activities">Timestamp based filters for Session Activities</h3>
+<div class="expressive-code"><figure class="frame is-terminal not-content"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="bash" tabindex="0" role="region"><code><div class="ec-line"><div class="code"><span style="--0:#E1E4E8">ENDPOINT</span><span style="--0:#F97583">=</span><span style="--0:#9ECBFF">"https://jules.googleapis.com/v1alpha/sessions/1234567/activities"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#E1E4E8">TIMESTAMP</span><span style="--0:#F97583">=</span><span style="--0:#9ECBFF">"2026-01-17T00:03:53.137240Z"</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#B392F0">curl</span><span style="--0:#E1E4E8"> </span><span style="--0:#79B8FF">-H</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">"x-goog-api-key: </span><span style="--0:#E1E4E8">$JULES_API_KEY</span><span style="--0:#9ECBFF">"</span><span style="--0:#E1E4E8"> </span><span style="--0:#79B8FF">\</span></div></div><div class="ec-line"><div class="code"><span class="indent">     </span><span style="--0:#9ECBFF">"</span><span style="--0:#E1E4E8">$ENDPOINT</span><span style="--0:#9ECBFF">?createTime=</span><span style="--0:#E1E4E8">$TIMESTAMP</span><span style="--0:#9ECBFF">"</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div></div></figure></div>
+<p>Each Jules Session has a collection of activities that represent the steps Jules took to complete the task. These activities are immutable and can be used to reconstruct the session.</p>
+<p>Activities follow the event source pattern, meaning once they occur they never change. They are a record in time of the steps Jules took to complete the task. Since they never change, you can cache them aggressively.</p>
+<p>We added a <code dir="auto">createTime</code> filter that works like a range cursor and allows you to only fetch new activities over the network.</p>
+<p>This may seem like a small optimization but stay tuned. We have some big news around this one.</p> </article><article class="changelog-entry astro-bd6alw26">  <p><img src="https://jules.google/docs/_astro/edit-scheduled-tasks.CL4-A4WL_Lx1eT.webp" alt="edit-scheduled-tasks" loading="lazy" decoding="async" fetchpriority="auto" width="2594" height="828"></p>
+<p>Quick quality-of-life update: You no longer need to delete and recreate a scheduled task just to fix a typo or change the timing.</p>
+<p>You can now <strong>Edit</strong>, <strong>Pause</strong>, and <strong>Resume</strong> your tasks directly from the menu. It’s a small change that saves a lot of clicking.</p> </article><article class="changelog-entry astro-bd6alw26">  <p><img src="https://jules.google/docs/_astro/suggested.CKs87OFo_Z1pJ90m.webp" alt="suggested" loading="lazy" decoding="async" fetchpriority="auto" width="1462" height="822"></p>
+<p>Jules can now work proactively in the background to improve your code. With Suggested Tasks, Jules scans your repository for potential improvements and presents them on your repo page.</p>
+<p>To get started, enable the proactive suggestions toggle on the repo page.</p>
+<ul>
+<li>
+<p><strong>Tackle the #TODOs</strong>: In this initial release, Jules focuses on identifying <code dir="auto">#TODO</code> comments in your code. It reads the context, formulates a plan, and presents it for your approval—turning idle comments into active solutions. More use cases coming soon.</p>
+</li>
+<li>
+<p><strong>Continuous Improvement</strong>: Once enabled, Jules continuously monitors your codebase. You don’t have to ask; just check your dashboard for new suggestions and approve the ones you want.</p>
+</li>
+</ul>
+<p>This experimental feature is available today for Google AI Pro and Ultra subscribers on up to five repositories.</p>
+<p>Read more at: <a href="https://jules.google/docs/suggested-tasks/">Suggested Tasks</a>.</p> </article><article class="changelog-entry astro-bd6alw26">  <p><img src="https://jules.google/docs/_astro/scheduled.AQyQ1slh_Z197M1I.webp" alt="scheduled" loading="lazy" decoding="async" fetchpriority="auto" width="1428" height="1348"></p>
+<p>You can now set recurring tasks for Jules. Whether it’s a weekly dependency check, a nightly lint fix, or a monthly cleanup, just define it once and Jules will handle the rest on your schedule.</p>
+<p>To get started, navigate to the <strong>Scheduled</strong> tab on your repo page to configure your first task.</p>
+<ul>
+<li>
+<p><strong>Set it and forget it</strong>: Define your maintenance chores once. Jules will wake up, perform the task, and open a PR without you needing to lift a finger.</p>
+</li>
+<li>
+<p><strong>Never miss a beat</strong>: No more manual prompts for the stuff that needs to happen every week. Ensure consistent code quality and dependency hygiene by automating your routine work.</p>
+</li>
+</ul>
+<p>This feature is available today for all Jules users.</p>
+<p>Read more at: <a href="https://jules.google/docs/scheduled-tasks/">Scheduled Tasks</a>.</p> </article><article class="changelog-entry astro-bd6alw26">  <p><img src="https://jules.google/docs/_astro/changelog-render.D9zwsE_A_ae4TR.webp" alt="Render" loading="lazy" decoding="async" fetchpriority="auto" width="2400" height="1350"></p>
+<p>We’ve integrated with Render to handle the last mile of shipping code. Jules can now detect failed builds, analyze the logs, and push fixes to its PRs before you even know your build failed.</p>
+<p>To enable this, go to your Render Dashboard, open the Help menu (top-right), and click Coding Agents to provision your API Key. Paste this key into Settings &gt; Integrations in Jules.</p>
+<ol>
+<li><strong>Instant Recovery:</strong> No more context switching to dig through console logs. Jules detects the failure immediately and identifies the root cause.</li>
+<li><strong>Proactive Fixes:</strong> Instead of just alerting you to an error, Jules writes the code to fix it. Review the solution as a standard commit on your PR, merge it, and get back to green.</li>
+</ol>
+<p>This integration is available now. Check out the <a href="/integrations">docs</a> for the full setup guide, including enabling PR previews.</p>
+<p><strong>Note:</strong> For now, Jules only fixes PRs it has created.</p> </article><article class="changelog-entry astro-bd6alw26">  <p><img src="https://jules.google/docs/_astro/repoless.DOwVSlX1_Z154aBl.webp" alt="Repoless" loading="lazy" decoding="async" fetchpriority="auto" width="2400" height="1350"></p>
+<p>You can now start a Jules task immediately without selecting a repository. We’ve removed the speed bump between your idea and your code, allowing you to capture that spark of inspiration without the overhead.</p>
+<p>To trigger this, simply click the “X” next to the selected repo to start a fresh, repoless session.</p>
+<ul>
+<li>
+<p><strong>Skip the Detour</strong>: Previously, starting a fresh journey meant hopping over to GitHub to create an empty repo first. Now, you can bypass that context switch entirely and keep your momentum.</p>
+</li>
+<li>
+<p><strong>Instant Ideation</strong>: Whether you are prototyping a new feature or writing a quick script, you can dive straight into the logic. Just describe what you want, and Jules gets to work.</p>
+</li>
+</ul>
+<p>This update is available now for all users starting a new task.</p> </article><article class="changelog-entry astro-bd6alw26">  <p><img src="https://jules.google/docs/_astro/gemini3.D-MJdx3W_19DBAX.webp" alt="Gemini 3" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="675"></p>
+<p>Gemini 3 Pro is now available in Jules. This is the newest generation of the Gemini family, bringing clearer reasoning, stronger instruction following, and a meaningful lift in day-to-day reliability.</p>
+<ul>
+<li>
+<p><strong>Coherent Planning</strong>: Multi-step tasks hold together more naturally. The agent requires less management during transitions, meaning your work moves forward with fewer detours.</p>
+</li>
+<li>
+<p><strong>Visual Verification</strong>: Leveraging the improved multimodal capabilities of Gemini 3 Pro, Jules renders and verifies web app outcomes with significantly higher precision.</p>
+</li>
+<li>
+<p><strong>Agentic Memories</strong>: The new model utilizes context more effectively, helping Jules adapt to your coding preferences and project nuances more reliably over time.</p>
+</li>
+</ul>
+<p>Gemini 3 Pro is rolling out now to Google AI Ultra users and will be available to Pro users in the coming days.</p> </article><article class="changelog-entry astro-bd6alw26">  <p><img src="https://jules.google/docs/_astro/julestools2.DXhpIjxz_8ovwl.webp" alt="Jules Tools" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="675"></p>
+<p>We’ve been busy shipping a bunch of new updates to the Jules Tools CLI to make your experience smoother and more powerful. Here’s a rundown of what’s new:</p>
+<h4 id="parallel-task-execution">Parallel Task Execution</h4>
+<p>You can now start multiple parallel tasks for the same prompt using the <code dir="auto">--parallel</code> flag with <code dir="auto">jules remote new</code>. This is useful for getting multiple suggestions from Jules at once (max of 5).</p>
+<ul>
+<li><strong>Added</strong>: <code dir="auto">--parallel</code> flag to <code dir="auto">remote new</code> command.</li>
+</ul>
+<h4 id="v0140---wslarch-linux-credential-fixes">v0.1.40 - WSL/Arch Linux Credential Fixes</h4>
+<p>We’ve refactored how we handle authentication to resolve credential issues for users on WSL and Arch Linux. This means broader platform support and no more login issues.</p>
+<h4 id="v0139---oauth2-error-handling-improvements">v0.1.39 - OAuth2 Error Handling Improvements</h4>
+<p>We’ve enhanced our OAuth2 flow to be more resilient with better error recovery, making the authentication process more reliable.</p>
+<h4 id="v0138---repository-inference-feature">v0.1.38 - Repository Inference Feature</h4>
+<p>To shorten CLI commands and reduce configuration, we’ve added repository inference. Now, Jules can automatically detect the repository from your current directory, so you don’t have to specify it manually.</p>
+<h4 id="v0137---pnpm-installation-fixes">v0.1.37 - PNPM Installation Fixes</h4>
+<p>We’ve added better support for the PNPM package manager, ensuring full compatibility for a wider range of JavaScript projects.</p>
+<h4 id="v0136---side-by-side-diff-viewer--bug-fixes">v0.1.36 - Side-by-Side Diff Viewer + Bug Fixes</h4>
+<p>Reviewing code is now faster and more readable with the new side-by-side diff viewer in the TUI. We’ve also added comprehensive test coverage and fixed bugs related to auto-approval and timeout validation.</p> </article><article class="changelog-entry astro-bd6alw26">  <p><img src="https://jules.google/docs/_astro/api.BIk2dddI_4xV60.webp" alt="API" loading="lazy" decoding="async" fetchpriority="auto" width="1670" height="714"></p>
+<p>You can now programmatically access Jules’s capabilities to automate your work and build powerful integrations. The Jules API is designed to help you seamlessly integrate Jules into your existing development workflows, unlocking new ways to automate and enhance the entire software development lifecycle.</p>
+<p><strong>With the API, you can:</strong></p>
+<ul>
+<li>Create custom integrations with tools like Slack for “ChatOps” workflows, allowing you to assign tasks directly from your chat client.</li>
+<li>Automate bug fixing and feature implementation by connecting Jules to your project management tools like Linear or Jira.</li>
+<li>Integrate Jules directly into your CI/CD pipelines in services like GitHub Actions.</li>
+</ul>
+<p>Here’s a quick example of how to create a new task (a “Session”) using a cURL command:</p>
+<div class="expressive-code"><link rel="stylesheet" href="https://jules.google/docs/_astro/ec.h0e1k.css"><script type="module" src="https://jules.google/docs/_astro/ec.0vx5m.js"></script><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">curl 'https://jules.googleapis.com/v1alpha/sessions' \</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8">    </span></span><span style="--0:#e1e4e8">-X POST \</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8">    </span></span><span style="--0:#e1e4e8">-H "Content-Type: application/json" \</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8">    </span></span><span style="--0:#e1e4e8">-H 'X-Goog-Api-Key: YOUR_API_KEY' \</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8">    </span></span><span style="--0:#e1e4e8">-d '{</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8">      </span></span><span style="--0:#e1e4e8">"prompt": "Create a boba app!",</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8">      </span></span><span style="--0:#e1e4e8">"sourceContext": {</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8">        </span></span><span style="--0:#e1e4e8">"source": "sources/github/bobalover/boba",</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8">        </span></span><span style="--0:#e1e4e8">"githubRepoContext": {</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8">          </span></span><span style="--0:#e1e4e8">"startingBranch": "main"</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8">        </span></span><span style="--0:#e1e4e8">}</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8">      </span></span><span style="--0:#e1e4e8">},</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8">      </span></span><span style="--0:#e1e4e8">"title": "Boba App"</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8">    </span></span><span style="--0:#e1e4e8">}'</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div></div></figure></div>
+<p>For more examples see the <a href="https://developers.google.com/jules/api">API documentation</a>.</p> </article><article class="changelog-entry astro-bd6alw26">  <p><img src="https://jules.google/docs/_astro/julestools.5p-1nZtH_Z2ht1Do.webp" alt="Jules Tools" loading="lazy" decoding="async" fetchpriority="auto" width="2215" height="1302"></p>
+<p>We’re launching Jules Tools, a new command-line interface designed to give you direct control over your AI coding agent, making it scriptable, customizable, and easy to integrate into your existing workflows.</p>
+<p><strong>Key Features:</strong></p>
+<ul>
+<li><strong>Direct Control:</strong> Create tasks (jules remote new), list active sessions (jules remote list), and monitor Jules without leaving your command line.</li>
+<li><strong>Apply Patches Locally:</strong> Instantly pull work-in-progress code from an active Jules session and apply it to your local machine. This lets you test changes immediately, without waiting for a commit to GitHub.</li>
+<li><strong>Scriptable &amp; Composable:</strong> Integrate Jules into your automations by piping in output from other tools like gh, jq, or cat.</li>
+<li><strong>Interactive Dashboard:</strong> For a more guided experience, launch the built-in terminal user interface (TUI) to create and manage tasks step-by-step.</li>
+</ul>
+<p><strong>How to Install:</strong></p>
+<p>Install globally via npm:
+<code dir="auto">npm install -g @google/jules</code></p>
+<p>Or run directly without a permanent installation:
+<code dir="auto">npx @google/jules</code></p>
+<p><strong>Starter Commands to Try:</strong></p>
+<p>See all available commands:
+<code dir="auto">jules help</code></p>
+<p>List all repos connected to Jules:
+<code dir="auto">jules remote list --repo</code></p>
+<p>Create a new task in a specific repo:
+<code dir="auto">jules remote new --repo torvalds/linux --session "write unit tests"</code></p>
+<br>
+<p>If you run into any issues, please share your experience with us via in-app feedback or on our <a href="https://discord.com/channels/1172568727942860810/1374062797519847505">Discord channel</a>.</p> </article><article class="changelog-entry astro-bd6alw26">  <p><img src="https://jules.google/docs/_astro/envar.Dhbt8Wwu_1KOCNa.webp" alt="Environment Variables" loading="lazy" decoding="async" fetchpriority="auto" width="1802" height="1142"></p>
+<p>You can now provide Jules with environment variables at the repository level. This enables Jules to access the project-specific configurations it needs to complete tasks, like running builds, executing tests, or interacting with different services.</p>
+<p><strong>How It Works</strong>:</p>
+<ul>
+<li><strong>Add Variables in Repo Settings:</strong> Navigate to your repository’s settings page to add your environment variables. They will be associated directly with your project.</li>
+<li><strong>Enable for a Task:</strong> When you start a new task with Jules, you’ll have the option to make these environment variables available to it.</li>
+<li><strong>Task-Long Access:</strong> Once enabled for a specific task, Jules will have access to the variables for the entire duration of that task. Please note that this setting cannot be changed after the task has begun.</li>
+</ul>
+<p>We’re excited to see how this unlocks new and more complex workflows for you and your team! Let us know if you have any feedback.</p> </article><article class="changelog-entry astro-bd6alw26">  <p><img src="https://jules.google/docs/_astro/memory.C9CEa_2-_Z17LG0c.webp" alt="Memory" loading="lazy" decoding="async" fetchpriority="auto" width="1856" height="1738"></p>
+<p><strong>Jules Memory for Repositories:</strong> We’re excited to introduce a new Memory feature! Jules now has the ability to learn from your interactions.</p>
+<ul>
+<li><strong>How it works:</strong> During a task, Jules will save your preferences, nudges, and corrections.</li>
+<li><strong>The benefit:</strong> The next time you run the same or a similar task in that specific repository, Jules will reference its memory to better anticipate your needs and follow your established patterns, leading to more accurate results with less guidance.</li>
+<li><strong>Settings:</strong> You can toggle memory on or off for the repo in the repo settings page under “Knowledge”</li>
+</ul> </article><article class="changelog-entry astro-bd6alw26">  <p><img src="https://jules.google/docs/_astro/fileselector.7WfNoQbn_26CxIH.webp" alt="File Selector" loading="lazy" decoding="async" fetchpriority="auto" width="1498" height="754"></p>
+<p>You can now tell Jules exactly which files to work with for any given task. Use the new file selector to easily and precisely reference specific files.</p>
+<p>This removes ambiguity and gives you more granular control over Jules’s actions, helping to tighten the context for your task.</p> </article><article class="changelog-entry astro-bd6alw26">  <p><img src="https://jules.google/docs/_astro/changelog-pr-comments.Cfoy5hKj_13iNLU.webp" alt="Jules responding to a PR comment" loading="lazy" decoding="async" fetchpriority="auto" width="2380" height="1338"></p>
+<p>Jules is now able to read and respond to your comments on pull requests!</p>
+<p>When you start a review, Jules will add a 👀 emoji to each comment to let you know it’s been read. Based on your feedback, Jules will then push a commit with the requested changes.</p>
+<p>For more control, you can switch to <strong>Reactive Mode</strong> in your <a href="https://jules.google.com/settings">global Jules UI settings</a>. In this mode, Jules will only act on comments where you specifically mention <code dir="auto">@Jules</code>.</p> </article><article class="changelog-entry astro-bd6alw26">  <p><img src="https://jules.google/docs/_astro/changelog-019.C2qW8uJn_2gscRb.webp" alt="image upload" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="675"></p>
+<p>Ahoy, mateys! To celebrate International Talk Like a Pirate Day, we’ve given Jules a temporary map to the treasure.</p>
+<ul>
+<li>
+<p>Jules Speaks Pirate: You’ll find your AI agent’s responses are a bit more… swashbuckling… for today only.</p>
+</li>
+<li>
+<p>Same Great Logic: Fear not! Beneath the eyepatch and Jolly Roger, it’s the same powerful coding engine ready to help you plunder that backlog and send bugs to Davy Jones’ locker.</p>
+</li>
+</ul> </article><article class="changelog-entry astro-bd6alw26">  <p><img src="https://jules.google/docs/_astro/image-upload.CXDvQ88D_Z1Yu1C4.webp" alt="image upload" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="675"></p>
+<p>You can now upload images when creating a task in Jules. Use this to show frontend bugs, design inspiration, UI mocks, or any visual context you want Jules to consider while generating code.</p>
+<p>For now:</p>
+<ul>
+<li>Only JPEG and PNG formats are supported.</li>
+<li>You can uplaod as many images as you want, as long as the total size is under 5MB.</li>
+<li>Image upload is only supported at task creation (we’re working on enabling it for follow-up prompts soon).</li>
+</ul>
+<p>Note: If your task involves using assets (e.g. logos) directly in code, those must still be committed to your GitHub repo.</p>
+<p><a href="https://jules.google/docs/running-tasks/">Read more</a> about Jules image support.</p> </article><article class="changelog-entry astro-bd6alw26">  <p><img src="https://jules.google/docs/_astro/changelog-017-fade.BsxUDclU_V57d9.webp" alt="Stacked Diff" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="675"></p>
+<p>To improve the code review experience, we’ve introduced a new stacked layout for the diff viewer. This change displays diffs for multiple files vertically on a single screen. The stacked view makes it easier to see related changes across your codebase at a glance, providing better context and speeding up your review process.</p>
+<p>Changes:</p>
+<ul>
+<li>The diff viewer now stacks file changes vertically by default</li>
+<li>You can also toggle back to the previous tabbed diff viewer</li>
+</ul> </article><article class="changelog-entry astro-bd6alw26">  <p><img src="https://jules.google/docs/_astro/changelog-016.DcExNlSl_1EY8iB.webp" alt="Improved Critic" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="675"></p>
+<p>We’ve shipped significant improvements to the Jules critic agent, making its feedback more insightful and reliable. To increase transparency and give you more insight into its evaluation process, you can now see the critic’s real-time analysis as it works.</p>
+<p>Changes:</p>
+<ul>
+<li>The critic’s thought process is now visible in the UI, showing its step-by-step evaluation of the code in real-time.</li>
+<li>The critic’s now incorporates more contextual information when making decisions, leading to more accurate and relevant feedback on potential bugs and logic flaws.</li>
+</ul> </article><article class="changelog-entry astro-bd6alw26">  <p><img src="https://jules.google/docs/_astro/changelog-015.CXL47v6I_1sTQ7S.webp" alt="Sample Prompts" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="675"></p>
+<p>To help new users get started with Jules, we’ve added sample prompts to the home page. These static prompts provide examples of how to use Jules and can be added to the text box with a single click.</p>
+<p>Changes:</p>
+<ul>
+<li>Sample prompts are now displayed on the home page for all users.</li>
+<li>Clicking on a sample prompt will add the text of the prompt to the input box.</li>
+</ul> </article><article class="changelog-entry astro-bd6alw26">  <p><img src="https://jules.google/docs/_astro/imagesdiffviewer.CfwMUfrJ_2uxzG0.webp" alt="Images in diff viewer" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="675"></p>
+<p>Jules now intelligently renders images within the diff viewer, providing an immediate visual context for your modifications.</p>
+<p>This means:</p>
+<ul>
+<li>Instant Visual Feedback: When Jules generates images (like charts, diagrams, or web UI screenshots), you’ll see the actual image in the diff, not just its code representation.</li>
+<li>Streamlined Workflow: No need to switch between tools or download files to see the results. Jules keeps everything in one place.</li>
+</ul>
+<p>Try it out! Ask Jules to render an output, like a graph based on data, and commit it to your repository. You’ll be able to see the generated image seamlessly within your diff viewer.</p> </article><article class="changelog-entry astro-bd6alw26">  <p><img src="https://jules.google/docs/_astro/exportatanytime.CJ8dxdjQ_ZTi5Nq.webp" alt="Export" loading="lazy" decoding="async" fetchpriority="auto" width="1504" height="364"></p>
+<p>You’re now in full control of when your code gets to GitHub. No need to wait for a task to finish or ask Jules to do it for you. At any point during a task, just click the GitHub icon in the top right to publish the current work-in-progress as a new branch or open a pull request. This gives you more flexibility and control to review, test, or take over whenever you’re ready.</p> </article><article class="changelog-entry astro-bd6alw26">  <p>We heard your feedback about running into disk space limits on larger projects. To address this, we’ve significantly increased the available disk space in the Jules VM to 20GB. This provides more room for large dependencies, build artifacts, and complex repositories, reducing disk-related failures so Jules can tackle bigger tasks. Happy Julesing!</p> </article><article class="changelog-entry astro-bd6alw26">  <p><img src="https://jules.google/docs/_astro/websearch.DYAsPzEM_Z1T1Fgu.webp" alt="Post Beta" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="675"></p>
+<p>Jules can now proactively search the web for relevant content, documentation, or code snippets to help complete your tasks. This means Jules can get the information it needs, resulting in more accurate and successful task completion.</p>
+<p>In Summary:</p>
+<ul>
+<li>Jules can find the latest documentation for dependencies/libraries you’re using</li>
+<li>Jules can proactively find examples or code snippets that can help inform its implementation</li>
+</ul>
+<p><strong>Note</strong>: web search works best when working on technical documentation. Queries like: “What is the latest news today?” are not supported.</p> </article><article class="changelog-entry astro-bd6alw26">  <p><img src="https://jules.google/docs/_astro/interactiveplan.BQJ_-8Fr_2aajzt.webp" alt="Post Beta" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="675"></p>
+<p>Meet Interactive Plan. Instead of jumping straight to the solution, Jules will now read your codebase, ask clarifying questions, and work with you to refine the plan. This collaborative approach gives you more control and ensures you’re on the same page, leading to higher-quality code and a more reliable solution.</p>
+<p>In summary:</p>
+<ul>
+<li>Trigger the interactive plan from the dropdown when you start a task</li>
+<li>Jules will start a brainstorm with you and ask clarifying questions</li>
+</ul> </article><article class="changelog-entry astro-bd6alw26">  <p><img src="https://jules.google/docs/_astro/critic.M-N27lZA_ZAPjfu.webp" alt="Critic Agent" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="675"></p>
+<p>Great developers don’t just write code, they question it. And now, so does Jules. We’ve built the Jules critic agent to ensure that every line of code isn’t just functional, but robust, secure, and efficient. It acts as an internal peer reviewer, challenging every proposed change to elevate the quality of the final output.</p>
+<p>Some high level notes:</p>
+<ul>
+<li>
+<p><strong>Critic-augmented generation:</strong> The Jules critic is integrated directly into the generation process. Every proposed change undergoes adversarial review before completion.</p>
+</li>
+<li>
+<p><strong>Improved code quality:</strong> The critic flags subtle bugs, missed edge cases, and inefficient code. Jules then uses this feedback to improve the patch in real-time.</p>
+</li>
+<li>
+<p><strong>A new kind of review:</strong> The critic is not just another linter or test. It understands the intent and context behind code, similar to a human peer reviewer.</p>
+</li>
+<li>
+<p><strong>Built on research:</strong> This feature draws on research into multi-step, tool interactive critiquing and actor-critic reinforcement learning, where an “actor” generates and a “critic” evaluates.</p>
+</li>
+</ul> </article><article class="changelog-entry astro-bd6alw26">  <p><img src="https://jules.google/docs/_astro/computeruse.DsMoFBka_14OxNJ.webp" alt="Post Beta" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="675"></p>
+<p>Next time you are working on a front end project with Jules, ask it to verify its work and it’ll render the website and send you back a screenshot!</p>
+<ul>
+<li>Ask Jules to complete a web development task and to verify the front end</li>
+<li>Jules will send you a screenshot of the front end along with any code changes</li>
+<li>The default Jules base image now includes Playwright for front end testing</li>
+<li>Users can also add images in the form of public URLs for Jules to use as input</li>
+</ul> </article><article class="changelog-entry astro-bd6alw26">  <p><img src="https://jules.google/docs/_astro/post-beta.CHZ_x9Mj_Z1PiJdY.webp" alt="Post Beta" loading="lazy" decoding="async" fetchpriority="auto" width="2008" height="1102"></p>
+<p>Today we are thrilled to announce that Jules is no longer in beta! Since launch just two months ago, Jules has passed over 140k public commits. Thank you to our amazing beta users for all your support and feedback.</p>
+<p>In addition, we’re launching our pricing plans to unlock higher task limits, along with a bunch of quality improvements in the Jules app and agent. Here are the details:</p>
+<ul>
+<li>Get higher task limits through the Google AI Pro and Ultra plans. More details at <a href="./../usage-limits">Limits and Plans</a>.</li>
+<li>Jules now uses the power of Gemini 2.5 thinking when creating its plan, resulting in higher quality plans and more complete tasks</li>
+<li>Numerous bug fixes so Jules gets stuck less, and is better at following your instructions in agents.md</li>
+</ul> </article><article class="changelog-entry astro-bd6alw26">  <p><img src="https://jules.google/docs/_astro/envsnapshot.Da7EUEdt_2vFn0C.webp" alt="Env Snapshot" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="675"></p>
+<p>Jules now creates a snapshot of your environment when you add environment setup scripts. For complicated environment, users should see faster and more consistent task execution.</p>
+<p>In summary:</p>
+<ul>
+<li>Jules will now snapshot your environment when you provide an environment setup script</li>
+<li>Snapshots are loaded automatically next time you run a task</li>
+<li>This provides for faster task startups, especially for complex environments</li>
+<li>You can find environment configuration by clicking the “codebase” in the left hand panel, or by clicking the “configure environment” button in the task pane.</li>
+</ul> </article><article class="changelog-entry astro-bd6alw26">  <p><img src="https://jules.google/docs/_astro/openapr.B4vE52yX_Z1M4K0M.webp" alt="Open a PR" loading="lazy" decoding="async" fetchpriority="auto" width="1201" height="675"></p>
+<p>Closing the loop from task to merge 🤝</p>
+<p>Jules can now open a pull request directly from the UI.
+After a task completes, just use the new dropdown next to the ‘Publish Branch’ button to open a PR. Jules will request to merge the newly published branch into main, streamlining your entire workflow. Less context switching, faster merging.</p> </article><article class="changelog-entry astro-bd6alw26">  <p><img src="https://jules.google/docs/_astro/jules_3bun.CJ2DViw__2wPAMA.webp" alt="Bun" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="675"></p>
+<p>Jules now supports <a href="https://bun.sh/">Bun</a>. You can run tasks using Bun out of the box, no extra setup required. This expands compatibility for projects that use Bun instead of Node.</p>
+<p><a href="https://jules.google.com/docs/environment/">Read more</a> about the jules base image and what tooling works with Jules.</p> </article><article class="changelog-entry astro-bd6alw26">  <p><img src="https://jules.google/docs/_astro/polish-tasks-changelog.Bzf_pBWz_2vjs48.webp" alt="Task controls" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="675"></p>
+<ul>
+<li>Pause, resume, and delete tasks—without losing your sense of place. Available from sidebar and repo view. You can even quickly copy task urls!</li>
+<li>Non-urgent task icons are now more recessive</li>
+<li>Certain hover states—which did not look good—have been toned back.</li>
+<li>System messages have more consistent padding and borders</li>
+</ul>
+<p><a href="https://jules.google.com/docs/running-tasks/">Learn more about running a task.</a></p> </article><article class="changelog-entry astro-bd6alw26">  <p><img src="https://jules.google/docs/_astro/assign-to-jules.DFMcEzUY_ivwm4.webp" alt="Assign to Jules" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="675"></p>
+<p>Add the label ‘jules’ to any GitHub issue to start a task in Jules. That’s it—label on, task live.</p>
+<p>How to summon Jules:</p>
+<ul>
+<li>Open a GitHub issue.</li>
+<li>Click the gear next to “Labels”.</li>
+<li>Add the label ‘jules.’</li>
+</ul>
+<p>Make sure the Jules GitHub App has access to your repo. After that, Jules takes it from there. <a href="https://jules.google/docs/running-tasks/">Read more about running tasks in Jules</a>!</p> </article><article class="changelog-entry astro-bd6alw26">  <p><img src="https://jules.google/docs/_astro/agents-md-support.COimRein_2qTvQj.webp" alt="Jules environment updates" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="675"></p>
+<p>We’ve shipped a big upgrade to the Jules agent under the hood.</p>
+<p>What’s new:</p>
+<ul>
+<li><strong>Smarter context.</strong> Jules reads from AGENTS.md if it’s in your repo.</li>
+<li><strong>Improved performance.</strong> Tasks now complete faster—no numbers to share just yet, but you’ll feel it.</li>
+<li><strong>Significantly reduced punting.</strong> We tightened the loop to keep Jules moving forward.</li>
+<li><strong>More reliable setup.</strong> If you’ve added an environment setup script, Jules now runs it consistently.</li>
+<li><strong>Better test habits.</strong> Jules is more likely to write and run tests on its own.</li>
+</ul>
+<p>Check out the <a href="https://jules.google/docs/">Getting Started</a> guide to learn more about AGENTS.md support.</p> </article><article class="changelog-entry astro-bd6alw26">  <p><img src="https://jules.google/docs/_astro/changelog-env-update.C-4Kcp7e_Hgx3E.webp" alt="Jules environment updates" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="675"></p>
+<p>We’ve overhauled the Jules development environment to move beyond the default Ubuntu 24.04 LTS packages. This includes:</p>
+<ul>
+<li>Explicitly installing newer versions of key toolchains like Rust, Node, and Python, addressing long-standing version issues.</li>
+<li>Adding finer-grained control over installation steps via custom scripts instead of relying solely on apt.</li>
+<li>Introducing support for multiple runtimes, improved isolation, and version pinning to reduce drift and better match developer expectations.</li>
+</ul>
+<p>These changes unblock several issues developers encountered with outdated dependencies and improve alignment with modern project requirements.</p>
+<p><a href="https://jules.google/docs/environment/">Read about the Jules environment setup to learn more about what’s pre-installed.</a></p> </article><article class="changelog-entry astro-bd6alw26">  <p><img src="https://jules.google/docs/_astro/jules-copy-paste-download.Bh0k6Pa9_ZF9tR6.webp" alt="Jules code view" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="675"></p>
+<p><strong>Performance upgrades:</strong> Enjoy a smoother, faster Jules experience with recent under-the-hood improvements.</p>
+<p><strong>Quickly copy and download code:</strong> New copy and download buttons are now available in the code view pane, making it easier to grab your code directly from Jules.</p>
+<p><strong>Stay focused with task modals:</strong> Initiate multiple tasks seamlessly through a new modal option, allowing you to keep your context and workflow intact. <a href="https://jules.google/docs/tasks-repos/">Learn more</a> about kicking off tasks.</p>
+<p><strong>Adjustable code panel:</strong> Customize your workspace by adjusting the width of the code panel to your preferred viewing experience.</p>
+<p><a href="https://jules.google/docs/code/">Check out the docs</a> to learn more about how to download code that Jules writes.</p> </article><article class="changelog-entry astro-bd6alw26">  <p>This week, our focus has been on improving reliability, fixing our GitHub integration, and scaling capacity.</p>
+<p><strong>Here’s what’s we shipped:</strong></p>
+<ul>
+<li>Updated our limits to 60 tasks per day, 5 concurrent.</li>
+<li>We substantially improved the reliability of the GitHub sync. Export to GitHub should also be fixed on previously created tasks.</li>
+<li>We’ve decreased the number of failure cases by 2/3</li>
+</ul>
+<p>Learn more <a href="./../usage-limits">about usage limits.</a></p> </article><article class="changelog-entry astro-bd6alw26">  <p>We’ve been heads down improving stability and fixing bugs—big and small—to make Jules faster, smoother, and more reliable for you.</p>
+<p><strong>Here’s what’s fixed:</strong></p>
+<ul>
+<li>Upgraded our queuing system and added more compute to reduce wait times during peak usage</li>
+<li>Publish Branch button is now part of the summary UI in the activity feed so it’s easier to find</li>
+<li>Bug vixes for task status and mobile</li>
+</ul>
+<p><a href="https://jules.google.com/docs/code/#pushing-to-github">Learn more</a> about how to publish a branch on GitHub.</p> </article><article class="changelog-entry astro-bd6alw26">  <p><img src="https://jules.google/docs/_astro/jules-changelog-og-image.CksfgUSk_Zv5umR.webp" alt="Jules dashboard" loading="lazy" decoding="async" fetchpriority="auto" width="2246" height="1196"></p>
+<p>Today, we’re launching <a href="https://jules.google.com" target="_blank" rel="noopener"><strong>Jules,</strong></a> a new AI coding agent.</p>
+<p>Jules helps you move faster by working autonomously on tasks in your GitHub repo. It can fix bugs, update dependencies, migrate code, and add new features.</p>
+<p>Once you give Jules a task, it spins up a fresh dev environment in a VM, installs dependencies, writes tests, makes the changes, runs the tests, and opens a pull request. Jules shows its work as it makes progress, so you never have to guess what code it’s writing, or what it’s thinking.</p>
+<p><strong>What Jules can do today</strong></p>
+<ul>
+<li>Fix bugs with test verified patches</li>
+<li>Handle version bumps and dependency upgrades</li>
+<li>Perform scoped code transformations</li>
+<li>Migrate code across languages or frameworks</li>
+<li>Ship isolated, scoped, features</li>
+<li>Open PRs with runnable code and test results</li>
+</ul>
+<p><a href="/">Get started with the Jules documentation</a>, and visit <a href="https://jules.google.com" target="_blank" rel="noopener">jules.google.com</a> to run your first Jules task.</p> </article> </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-2">
+            <div class="module-header">
+                <h2>Gemini 3.1 Pro is now available in Jules</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2026-03-09</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Gemini 3.1 Pro is now available in Jules</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">March 9, 2026</p> <p><img src="https://jules.google/docs/_astro/gemini-3.1-pro.wT0wXEsJ_24Bmue.webp" alt="gemini-3.1-pro" loading="lazy" decoding="async" fetchpriority="auto" width="2400" height="1350"></p>
+<p>Gemini 3.1 Pro is now available in Jules for Google Pro plan users. 3.1 Pro is a smarter, more capable baseline for complex problem-solving.</p>
+<p><img src="https://jules.google/docs/_astro/gemini-3.1-pro-web-app.R9NZfbbR_15qEba.webp" alt="gemini-3.1-pro-web-app" loading="lazy" decoding="async" fetchpriority="auto" width="3456" height="2160"></p>
+<p>This replaces Gemini 3 Pro as the default model for Pro users. Give it a try and let us know what you think.</p>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-3">
+            <div class="module-header">
+                <h2>Auto-Fixing CI Failures and configure Jules to commit as you</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2026-02-19</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Auto-Fixing CI Failures and configure Jules to commit as you</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">February 19, 2026</p> <video preload="none" poster="https://firebasestorage.googleapis.com/v0/b/aida-async-workflow.firebasestorage.app/o/media%2FJULESVC000_CI_FIXER%2Fposter.png?alt=media" src="https://firebasestorage.googleapis.com/v0/b/aida-async-workflow.firebasestorage.app/o/media%2FJULESVC000_CI_FIXER%2Fvideo.mp4?alt=media" controls=""></video>
+<h3 id="ci-fixer">CI Fixer</h3>
+<p>Jules now automatically detects and fixes CI failures on pull requests it creates. When a check fails in GitHub Actions, Jules receives the error, works through a fix, and resubmits the PR — all without manual intervention.</p>
+<p><img src="https://jules.google/docs/_astro/ci-fixer.DvE-FgVC_ZytKJW.webp" alt="ci-fixer" loading="lazy" decoding="async" fetchpriority="auto" width="1595" height="897"></p>
+<p>Previously, a failed CI check on a Jules PR would stall your workflow. Resolving it required setting up REST API calls or manually copy-pasting error logs back to Jules. CI Fixer closes that gap. Jules now operates in a loop — fixing, committing, and resubmitting — so your PRs keep moving forward.</p>
+<h3 id="commit-authoring">Commit Authoring</h3>
+<p>You can now control how commits from Jules are attributed on GitHub. Three authorship modes are available:</p>
+<ul>
+<li><strong>Jules:</strong> Jules is the sole author of all commits (default, existing behavior).</li>
+<li><strong>Co-authored (Jules + You or You + Jules):</strong> Commits are co-authored by both you and Jules, crediting both contributors.</li>
+<li><strong>User only:</strong> You are the sole author. Jules applies its changes under your identity.</li>
+</ul>
+<p><img src="https://jules.google/docs/_astro/authorship.BOAG-F4i_Ze7cTp.webp" alt="authorship" loading="lazy" decoding="async" fetchpriority="auto" width="1595" height="897"></p>
+<p>Previously, Jules authored every commit and PR, which meant your GitHub contribution graph didn’t reflect the work you initiated. Setting the commit authorship in to co-authored to you or you + Jules, makes it clear to contributors and PR reviewers who is driving each change.</p>
+<p>It applies at the user level across all repositories and all task types — scheduled, suggested, and manually triggered tasks.</p>
+<h4 id="setting-commit-authorship">Setting commit authorship</h4>
+<ol>
+<li>Go to the Jules Settings page</li>
+<li>Open the <strong>Commit Authoring</strong> section</li>
+<li>Select your preferred authorship mode</li>
+<li>All future sessions will use the selected attribution</li>
+</ol>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-4">
+            <div class="module-header">
+                <h2>MCP support comes to Jules</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2026-02-02</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >MCP support comes to Jules</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">February 2, 2026</p> <p><img src="https://jules.google/docs/_astro/mcp-support.DfBfW7lh_Z2nUiOo.webp" alt="mcp-support" loading="lazy" decoding="async" fetchpriority="auto" width="512" height="288"></p>
+<p>Today we’re launching MCP Server support in Jules starting with: Linear, Stitch, Neon, Tinybird, Context7, and Supabase.</p>
+<p>Add a service connection in the Settings page and will trigger the MCP server tools in a session when it detects the need for a tool call.</p>
+<h3 id="getting-started">Getting started</h3>
+<p>Our MCP server integration uses API key authentication. To get started:</p>
+<ol>
+<li>Get the service’s API key (such as Linear or Stitch)</li>
+<li>Go to the Jules Settings page</li>
+<li>Click on the MCP section</li>
+<li>Plug in your API key for that specific service</li>
+<li>Kick off a new session</li>
+<li>Jules will trigger the MCP server tools when it detects the need for the call</li>
+</ol>
+<p><img src="https://jules.google/docs/_astro/mcp-settings.CdNqjk-x_9Rk2h.webp" alt="mcp-settings" loading="lazy" decoding="async" fetchpriority="auto" width="1728" height="1080"></p>
+<h3 id="focus-on-security">Focus on Security</h3>
+<p>It might seem odd for us to limit which MCP servers Jules can connect to. However, we are wanted to start with a focus on security. Jules operates within a cloud development environment connected to your GitHub repositories, so we prioritize a <strong>security-first</strong> approach to third-party integrations.</p>
+<p>By hand-selecting these initial servers, we can:</p>
+<ul>
+<li><strong>Validate Data Flow:</strong> We ensure that each server adheres to strict data-handling standards, keeping your source code and API keys isolated.</li>
+<li><strong>Audit Tool Permissions:</strong> We verify that each server only requests the specific permissions it needs to function, preventing “over-privileged” access to your environment.</li>
+<li><strong>Ensure Stability:</strong> A vetted integration means fewer connection drops and a more predictable experience when Jules interacts with your external data.</li>
+</ul>
+<p>We plan to expand this list as we work with more partners.</p>
+<h3 id="tell-us-what-to-add-next">Tell us what to add next</h3>
+<p>If you have an MCP server in mind, you can let us know in the settings panel what we should add next.</p>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-5">
+            <div class="module-header">
+                <h2>Gemini 3 Flash is now the base model in Jules</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2026-01-30</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Gemini 3 Flash is now the base model in Jules</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">January 30, 2026</p> <p><img src="https://jules.google/docs/_astro/gemini-3-flash@2x.Jb2wbw3a_yijHp.webp" alt="gemini-3-flash" loading="lazy" decoding="async" fetchpriority="auto" width="2400" height="1350"></p>
+<p>Today we’re launching Gemini 3 Flash in Jules for all users on all tiers.</p>
+<p>It’s our new base model that’s faster and significantly more capable than our previous base model, Gemini 2.5 Pro. If it feels like Jules feels like it had a double espresso, you now know why.</p>
+<p><img src="https://jules.google/docs/_astro/gemini-3-flash-web-app.sc6E0AWS_1pMh81.webp" alt="gemini-3-flash-web-app" loading="lazy" decoding="async" fetchpriority="auto" width="1728" height="1080"></p>
+<p>Give it a spin and let us know what you think.</p>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-6">
+            <div class="module-header">
+                <h2>Update Scheduled Tasks</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2026-01-26-5</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Update Scheduled Tasks</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">January 26, 2026</p> <p><img src="https://jules.google/docs/_astro/edit-scheduled-tasks.CL4-A4WL_Lx1eT.webp" alt="edit-scheduled-tasks" loading="lazy" decoding="async" fetchpriority="auto" width="2594" height="828"></p>
+<p>Quick quality-of-life update: You no longer need to delete and recreate a scheduled task just to fix a typo or change the timing.</p>
+<p>You can now <strong>Edit</strong>, <strong>Pause</strong>, and <strong>Resume</strong> your tasks directly from the menu. It’s a small change that saves a lot of clicking.</p>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-7">
+            <div class="module-header">
+                <h2>REST API: Repoless, File Outputs, and Activity Filters</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2026-01-26-4</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >REST API: Repoless, File Outputs, and Activity Filters</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">January 26, 2026</p> <div class="expressive-code"><link rel="stylesheet" href="https://jules.google/docs/_astro/ec.h0e1k.css"><script type="module" src="https://jules.google/docs/_astro/ec.0vx5m.js"></script><figure class="frame is-terminal not-content"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="shell"><code><div class="ec-line"><div class="code"><span style="--0:#E1E4E8">PROMPT_CONTENT</span><span style="--0:#F97583">=</span><span style="--0:#E1E4E8">$(</span><span style="--0:#B392F0">jq</span><span style="--0:#E1E4E8"> </span><span style="--0:#79B8FF">-Rs</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">.</span><span style="--0:#E1E4E8"> </span><span style="--0:#F97583">&lt;</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">my_prompt.md</span><span style="--0:#E1E4E8">)</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#B392F0">curl</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">'https://jules.googleapis.com/v1alpha/sessions'</span><span style="--0:#E1E4E8"> </span><span style="--0:#79B8FF">\</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#79B8FF">-X</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">POST</span><span style="--0:#E1E4E8"> </span><span style="--0:#79B8FF">\</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#79B8FF">-H</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">"Content-Type: application/json"</span><span style="--0:#E1E4E8"> </span><span style="--0:#79B8FF">\</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#79B8FF">-H</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">"x-goog-api-key: </span><span style="--0:#E1E4E8">$JULES_API_KEY</span><span style="--0:#9ECBFF">"</span><span style="--0:#E1E4E8"> </span><span style="--0:#79B8FF">\</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#79B8FF">-d</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">"{</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#79B8FF">\"</span><span style="--0:#9ECBFF">prompt</span><span style="--0:#79B8FF">\"</span><span style="--0:#9ECBFF">: </span><span style="--0:#E1E4E8">$PROMPT_CONTENT</span><span style="--0:#9ECBFF">,</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#79B8FF">\"</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div></div></figure></div>
+<h3 id="repoless-support-in-the-rest-api">Repoless support in the REST API</h3>
+<p>Repoless comes to the REST API and we think this has <strong>massive potential</strong>. A repoless session in a sense becomes serverless, because it creates an ephemeral cloud dev environment with Node, Python, Rust, Bun, and other runtimes preloaded on the image.</p>
+<p>The massive potential is that this serverless environment comes with an AI coding agent.</p>
+<p>With a single API call you can spawn a serverless dev environment with only the context in your prompt. When it’s done you can download the file outputs from the session.</p>
+<p>We can’t wait to see what you all do with this one.</p>
+<h3 id="get-the-entire-file-outputs-from-a-session">Get the entire file outputs from a session</h3>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext" tabindex="0" role="region"><code><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">┌──────────────────────────────────────────────────────────────────────────────┐</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">│  FILES CHANGED                                                               │</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">├──────────────────────────────────────────────────────────────────────────────┤</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">│  [M]  bun.lock                                            +567    -163       │</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">│  [A]  bunfig.toml                                           +2      -0       │</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">│  [M]  examples/simple/main.ts                               +2      -1       │</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">│  [M]  packages/core/src/client.ts                          +21      -6       │</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">│  [M]  packages/core/src/network/adapter.ts                 +46     -13       │</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">│  [A]  packages/core/src/retry-utils.ts                     +89      -0       │</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">│  [M]  packages/core/src/sources.ts                          +2      -0       │</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">│  [M]  packages/core/src/streaming.ts                       +15     -51       │</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">│  [M]  packages/core/src/types.ts                           +12      -0       │</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">│  [M]  packages/core/tests/automated_session.test.ts       +125      -0       │</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">│  [M]  packages/core/tests/network/adapter.test.ts         +109      -0       │</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">│  [A]  packages/core/tests/retry-utils.test.ts             +140      -0       │</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">│  [M]  packages/core/tests/sources.test.ts                  +21      -0       │</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">├──────────────────────────────────────────────────────────────────────────────┤</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">│  Summary: 13 files changed                        +1,151 insertions, -234    │</span></div></div><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">└──────────────────────────────────────────────────────────────────────────────┘</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8">  </span></span><span style="--0:#e1e4e8">Session finished: completed</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div></div></figure></div>
+<p>Speaking of file outputs, we just made that a lot easier. When a session completes a task, you can now get the entire change set.</p>
+<p>This is stored in a git patch format for parsing changes such as additions, modifications, and deletions.</p>
+<h3 id="timestamp-based-filters-for-session-activities">Timestamp based filters for Session Activities</h3>
+<div class="expressive-code"><figure class="frame is-terminal not-content"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="bash" tabindex="0" role="region"><code><div class="ec-line"><div class="code"><span style="--0:#E1E4E8">ENDPOINT</span><span style="--0:#F97583">=</span><span style="--0:#9ECBFF">"https://jules.googleapis.com/v1alpha/sessions/1234567/activities"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#E1E4E8">TIMESTAMP</span><span style="--0:#F97583">=</span><span style="--0:#9ECBFF">"2026-01-17T00:03:53.137240Z"</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#B392F0">curl</span><span style="--0:#E1E4E8"> </span><span style="--0:#79B8FF">-H</span><span style="--0:#E1E4E8"> </span><span style="--0:#9ECBFF">"x-goog-api-key: </span><span style="--0:#E1E4E8">$JULES_API_KEY</span><span style="--0:#9ECBFF">"</span><span style="--0:#E1E4E8"> </span><span style="--0:#79B8FF">\</span></div></div><div class="ec-line"><div class="code"><span class="indent">     </span><span style="--0:#9ECBFF">"</span><span style="--0:#E1E4E8">$ENDPOINT</span><span style="--0:#9ECBFF">?createTime=</span><span style="--0:#E1E4E8">$TIMESTAMP</span><span style="--0:#9ECBFF">"</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div></div></figure></div>
+<p>Each Jules Session has a collection of activities that represent the steps Jules took to complete the task. These activities are immutable and can be used to reconstruct the session.</p>
+<p>Activities follow the event source pattern, meaning once they occur they never change. They are a record in time of the steps Jules took to complete the task. Since they never change, you can cache them aggressively.</p>
+<p>We added a <code dir="auto">createTime</code> filter that works like a range cursor and allows you to only fetch new activities over the network.</p>
+<p>This may seem like a small optimization but stay tuned. We have some big news around this one.</p>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-8">
+            <div class="module-header">
+                <h2>Jules now finds performance optimizations</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2026-01-26-3</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Jules now finds performance optimizations</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">January 26, 2026</p> <p><img src="https://jules.google/docs/_astro/performance.DQw6awj8_167lk0.webp" alt="performance" loading="lazy" decoding="async" fetchpriority="auto" width="1794" height="1086"></p>
+<p>Jules now surfaces Performance Optimizations Jules has expanded its detection capabilities.</p>
+<p>In addition to standard TODOs, Jules now proactively identifies performance optimizations within your code. These suggestions appear alongside your existing TODOs in the Suggested Tasks view, helping you catch bottlenecks and inefficiencies just as easily as you catch unfinished code.</p>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-9">
+            <div class="module-header">
+                <h2>Introducing the Planning Critic for Auto-Approved Plans</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2026-01-26-1</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Introducing the Planning Critic for Auto-Approved Plans</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">January 26, 2026</p> <p><img src="https://jules.google/docs/_astro/planning-critic.Dz2LCA1B_LH0sq.webp" alt="Planning Critic" loading="lazy" decoding="async" fetchpriority="auto" width="2050" height="1154"></p>
+<p>We’ve introduced a secondary agent—the Planning Critic—to review all plans that do not require human intervention. Before Jules executes a single line of code, this agent rigorously critiques and refines the proposed plan. While this adds a small amount of time to the planning phase, the result is a 9.5% reduction in task failure rates and significantly higher quality execution paths.</p>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-10">
+            <div class="module-header">
+                <h2>Automated fixes for Render deployments</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2025-12-102</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Automated fixes for Render deployments</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">December 10, 2025</p> <p><img src="https://jules.google/docs/_astro/changelog-render.D9zwsE_A_ae4TR.webp" alt="Render" loading="lazy" decoding="async" fetchpriority="auto" width="2400" height="1350"></p>
+<p>We’ve integrated with Render to handle the last mile of shipping code. Jules can now detect failed builds, analyze the logs, and push fixes to its PRs before you even know your build failed.</p>
+<p>To enable this, go to your Render Dashboard, open the Help menu (top-right), and click Coding Agents to provision your API Key. Paste this key into Settings &gt; Integrations in Jules.</p>
+<ol>
+<li><strong>Instant Recovery:</strong> No more context switching to dig through console logs. Jules detects the failure immediately and identifies the root cause.</li>
+<li><strong>Proactive Fixes:</strong> Instead of just alerting you to an error, Jules writes the code to fix it. Review the solution as a standard commit on your PR, merge it, and get back to green.</li>
+</ol>
+<p>This integration is available now. Check out the <a href="/integrations">docs</a> for the full setup guide, including enabling PR previews.</p>
+<p><strong>Note:</strong> For now, Jules only fixes PRs it has created.</p>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-11">
+            <div class="module-header">
+                <h2>Put routine maintenance on autopilot with Scheduled Tasks</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2025-12-101</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Put routine maintenance on autopilot with Scheduled Tasks</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">December 10, 2025</p> <p><img src="https://jules.google/docs/_astro/scheduled.AQyQ1slh_Z197M1I.webp" alt="scheduled" loading="lazy" decoding="async" fetchpriority="auto" width="1428" height="1348"></p>
+<p>You can now set recurring tasks for Jules. Whether it’s a weekly dependency check, a nightly lint fix, or a monthly cleanup, just define it once and Jules will handle the rest on your schedule.</p>
+<p>To get started, navigate to the <strong>Scheduled</strong> tab on your repo page to configure your first task.</p>
+<ul>
+<li>
+<p><strong>Set it and forget it</strong>: Define your maintenance chores once. Jules will wake up, perform the task, and open a PR without you needing to lift a finger.</p>
+</li>
+<li>
+<p><strong>Never miss a beat</strong>: No more manual prompts for the stuff that needs to happen every week. Ensure consistent code quality and dependency hygiene by automating your routine work.</p>
+</li>
+</ul>
+<p>This feature is available today for all Jules users.</p>
+<p>Read more at: <a href="https://jules.google/docs/scheduled-tasks/">Scheduled Tasks</a>.</p>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-12">
+            <div class="module-header">
+                <h2>Enable suggested tasks to let Jules find issues proactively</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2025-12-10</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Enable suggested tasks to let Jules find issues proactively</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">December 10, 2025</p> <p><img src="https://jules.google/docs/_astro/suggested.CKs87OFo_Z1pJ90m.webp" alt="suggested" loading="lazy" decoding="async" fetchpriority="auto" width="1462" height="822"></p>
+<p>Jules can now work proactively in the background to improve your code. With Suggested Tasks, Jules scans your repository for potential improvements and presents them on your repo page.</p>
+<p>To get started, enable the proactive suggestions toggle on the repo page.</p>
+<ul>
+<li>
+<p><strong>Tackle the #TODOs</strong>: In this initial release, Jules focuses on identifying <code dir="auto">#TODO</code> comments in your code. It reads the context, formulates a plan, and presents it for your approval—turning idle comments into active solutions. More use cases coming soon.</p>
+</li>
+<li>
+<p><strong>Continuous Improvement</strong>: Once enabled, Jules continuously monitors your codebase. You don’t have to ask; just check your dashboard for new suggestions and approve the ones you want.</p>
+</li>
+</ul>
+<p>This experimental feature is available today for Google AI Pro and Ultra subscribers on up to five repositories.</p>
+<p>Read more at: <a href="https://jules.google/docs/suggested-tasks/">Suggested Tasks</a>.</p>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-13">
+            <div class="module-header">
+                <h2>Start from scratch—instantly</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2025-11-20</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Start from scratch—instantly</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">November 20, 2025</p> <p><img src="https://jules.google/docs/_astro/repoless.DOwVSlX1_Z154aBl.webp" alt="Repoless" loading="lazy" decoding="async" fetchpriority="auto" width="2400" height="1350"></p>
+<p>You can now start a Jules task immediately without selecting a repository. We’ve removed the speed bump between your idea and your code, allowing you to capture that spark of inspiration without the overhead.</p>
+<p>To trigger this, simply click the “X” next to the selected repo to start a fresh, repoless session.</p>
+<ul>
+<li>
+<p><strong>Skip the Detour</strong>: Previously, starting a fresh journey meant hopping over to GitHub to create an empty repo first. Now, you can bypass that context switch entirely and keep your momentum.</p>
+</li>
+<li>
+<p><strong>Instant Ideation</strong>: Whether you are prototyping a new feature or writing a quick script, you can dive straight into the logic. Just describe what you want, and Jules gets to work.</p>
+</li>
+</ul>
+<p>This update is available now for all users starting a new task.</p>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-14">
+            <div class="module-header">
+                <h2>Introducing Gemini 3 Pro</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2025-11-19</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Introducing Gemini 3 Pro</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">November 19, 2025</p> <p><img src="https://jules.google/docs/_astro/gemini3.D-MJdx3W_19DBAX.webp" alt="Gemini 3" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="675"></p>
+<p>Gemini 3 Pro is now available in Jules. This is the newest generation of the Gemini family, bringing clearer reasoning, stronger instruction following, and a meaningful lift in day-to-day reliability.</p>
+<ul>
+<li>
+<p><strong>Coherent Planning</strong>: Multi-step tasks hold together more naturally. The agent requires less management during transitions, meaning your work moves forward with fewer detours.</p>
+</li>
+<li>
+<p><strong>Visual Verification</strong>: Leveraging the improved multimodal capabilities of Gemini 3 Pro, Jules renders and verifies web app outcomes with significantly higher precision.</p>
+</li>
+<li>
+<p><strong>Agentic Memories</strong>: The new model utilizes context more effectively, helping Jules adapt to your coding preferences and project nuances more reliably over time.</p>
+</li>
+</ul>
+<p>Gemini 3 Pro is rolling out now to Google AI Ultra users and will be available to Pro users in the coming days.</p>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-15">
+            <div class="module-header">
+                <h2>New Jules Tools CLI Updates: Side-by-Side Diffs, Repo Inference, and More</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2025-11-10</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >New Jules Tools CLI Updates: Side-by-Side Diffs, Repo Inference, and More</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">November 10, 2025</p> <p><img src="https://jules.google/docs/_astro/julestools2.DXhpIjxz_8ovwl.webp" alt="Jules Tools" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="675"></p>
+<p>We’ve been busy shipping a bunch of new updates to the Jules Tools CLI to make your experience smoother and more powerful. Here’s a rundown of what’s new:</p>
+<h4 id="parallel-task-execution">Parallel Task Execution</h4>
+<p>You can now start multiple parallel tasks for the same prompt using the <code dir="auto">--parallel</code> flag with <code dir="auto">jules remote new</code>. This is useful for getting multiple suggestions from Jules at once (max of 5).</p>
+<ul>
+<li><strong>Added</strong>: <code dir="auto">--parallel</code> flag to <code dir="auto">remote new</code> command.</li>
+</ul>
+<h4 id="v0140---wslarch-linux-credential-fixes">v0.1.40 - WSL/Arch Linux Credential Fixes</h4>
+<p>We’ve refactored how we handle authentication to resolve credential issues for users on WSL and Arch Linux. This means broader platform support and no more login issues.</p>
+<h4 id="v0139---oauth2-error-handling-improvements">v0.1.39 - OAuth2 Error Handling Improvements</h4>
+<p>We’ve enhanced our OAuth2 flow to be more resilient with better error recovery, making the authentication process more reliable.</p>
+<h4 id="v0138---repository-inference-feature">v0.1.38 - Repository Inference Feature</h4>
+<p>To shorten CLI commands and reduce configuration, we’ve added repository inference. Now, Jules can automatically detect the repository from your current directory, so you don’t have to specify it manually.</p>
+<h4 id="v0137---pnpm-installation-fixes">v0.1.37 - PNPM Installation Fixes</h4>
+<p>We’ve added better support for the PNPM package manager, ensuring full compatibility for a wider range of JavaScript projects.</p>
+<h4 id="v0136---side-by-side-diff-viewer--bug-fixes">v0.1.36 - Side-by-Side Diff Viewer + Bug Fixes</h4>
+<p>Reviewing code is now faster and more readable with the new side-by-side diff viewer in the TUI. We’ve also added comprehensive test coverage and fixed bugs related to auto-approval and timeout validation.</p>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-16">
+            <div class="module-header">
+                <h2>Introducing the Jules API</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2025-10-03</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Introducing the Jules API</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">October 3, 2025</p> <p><img src="https://jules.google/docs/_astro/api.BIk2dddI_4xV60.webp" alt="API" loading="lazy" decoding="async" fetchpriority="auto" width="1670" height="714"></p>
+<p>You can now programmatically access Jules’s capabilities to automate your work and build powerful integrations. The Jules API is designed to help you seamlessly integrate Jules into your existing development workflows, unlocking new ways to automate and enhance the entire software development lifecycle.</p>
+<p><strong>With the API, you can:</strong></p>
+<ul>
+<li>Create custom integrations with tools like Slack for “ChatOps” workflows, allowing you to assign tasks directly from your chat client.</li>
+<li>Automate bug fixing and feature implementation by connecting Jules to your project management tools like Linear or Jira.</li>
+<li>Integrate Jules directly into your CI/CD pipelines in services like GitHub Actions.</li>
+</ul>
+<p>Here’s a quick example of how to create a new task (a “Session”) using a cURL command:</p>
+<div class="expressive-code"><link rel="stylesheet" href="https://jules.google/docs/_astro/ec.h0e1k.css"><script type="module" src="https://jules.google/docs/_astro/ec.0vx5m.js"></script><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#e1e4e8">curl 'https://jules.googleapis.com/v1alpha/sessions' \</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8">    </span></span><span style="--0:#e1e4e8">-X POST \</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8">    </span></span><span style="--0:#e1e4e8">-H "Content-Type: application/json" \</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8">    </span></span><span style="--0:#e1e4e8">-H 'X-Goog-Api-Key: YOUR_API_KEY' \</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8">    </span></span><span style="--0:#e1e4e8">-d '{</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8">      </span></span><span style="--0:#e1e4e8">"prompt": "Create a boba app!",</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8">      </span></span><span style="--0:#e1e4e8">"sourceContext": {</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8">        </span></span><span style="--0:#e1e4e8">"source": "sources/github/bobalover/boba",</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8">        </span></span><span style="--0:#e1e4e8">"githubRepoContext": {</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8">          </span></span><span style="--0:#e1e4e8">"startingBranch": "main"</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8">        </span></span><span style="--0:#e1e4e8">}</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8">      </span></span><span style="--0:#e1e4e8">},</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8">      </span></span><span style="--0:#e1e4e8">"title": "Boba App"</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#e1e4e8">    </span></span><span style="--0:#e1e4e8">}'</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div></div></figure></div>
+<p>For more examples see the <a href="https://developers.google.com/jules/api">API documentation</a>.</p>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-17">
+            <div class="module-header">
+                <h2>Jules in the command line</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2025-10-02</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Jules in the command line</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">October 2, 2025</p> <p><img src="https://jules.google/docs/_astro/julestools.5p-1nZtH_Z2ht1Do.webp" alt="Jules Tools" loading="lazy" decoding="async" fetchpriority="auto" width="2215" height="1302"></p>
+<p>We’re launching Jules Tools, a new command-line interface designed to give you direct control over your AI coding agent, making it scriptable, customizable, and easy to integrate into your existing workflows.</p>
+<p><strong>Key Features:</strong></p>
+<ul>
+<li><strong>Direct Control:</strong> Create tasks (jules remote new), list active sessions (jules remote list), and monitor Jules without leaving your command line.</li>
+<li><strong>Apply Patches Locally:</strong> Instantly pull work-in-progress code from an active Jules session and apply it to your local machine. This lets you test changes immediately, without waiting for a commit to GitHub.</li>
+<li><strong>Scriptable &amp; Composable:</strong> Integrate Jules into your automations by piping in output from other tools like gh, jq, or cat.</li>
+<li><strong>Interactive Dashboard:</strong> For a more guided experience, launch the built-in terminal user interface (TUI) to create and manage tasks step-by-step.</li>
+</ul>
+<p><strong>How to Install:</strong></p>
+<p>Install globally via npm:
+<code dir="auto">npm install -g @google/jules</code></p>
+<p>Or run directly without a permanent installation:
+<code dir="auto">npx @google/jules</code></p>
+<p><strong>Starter Commands to Try:</strong></p>
+<p>See all available commands:
+<code dir="auto">jules help</code></p>
+<p>List all repos connected to Jules:
+<code dir="auto">jules remote list --repo</code></p>
+<p>Create a new task in a specific repo:
+<code dir="auto">jules remote new --repo torvalds/linux --session "write unit tests"</code></p>
+<br>
+<p>If you run into any issues, please share your experience with us via in-app feedback or on our <a href="https://discord.com/channels/1172568727942860810/1374062797519847505">Discord channel</a>.</p>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-18">
+            <div class="module-header">
+                <h2>Use Environment Variables In Jules</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2025-10-01</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Use Environment Variables In Jules</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">October 1, 2025</p> <p><img src="https://jules.google/docs/_astro/envar.Dhbt8Wwu_1KOCNa.webp" alt="Environment Variables" loading="lazy" decoding="async" fetchpriority="auto" width="1802" height="1142"></p>
+<p>You can now provide Jules with environment variables at the repository level. This enables Jules to access the project-specific configurations it needs to complete tasks, like running builds, executing tests, or interacting with different services.</p>
+<p><strong>How It Works</strong>:</p>
+<ul>
+<li><strong>Add Variables in Repo Settings:</strong> Navigate to your repository’s settings page to add your environment variables. They will be associated directly with your project.</li>
+<li><strong>Enable for a Task:</strong> When you start a new task with Jules, you’ll have the option to make these environment variables available to it.</li>
+<li><strong>Task-Long Access:</strong> Once enabled for a specific task, Jules will have access to the variables for the entire duration of that task. Please note that this setting cannot be changed after the task has begun.</li>
+</ul>
+<p>We’re excited to see how this unlocks new and more complex workflows for you and your team! Let us know if you have any feedback.</p>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-19">
+            <div class="module-header">
+                <h2>Jules gains memory!</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2025-09-30</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Jules gains memory!</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">September 30, 2025</p> <p><img src="https://jules.google/docs/_astro/memory.C9CEa_2-_Z17LG0c.webp" alt="Memory" loading="lazy" decoding="async" fetchpriority="auto" width="1856" height="1738"></p>
+<p><strong>Jules Memory for Repositories:</strong> We’re excited to introduce a new Memory feature! Jules now has the ability to learn from your interactions.</p>
+<ul>
+<li><strong>How it works:</strong> During a task, Jules will save your preferences, nudges, and corrections.</li>
+<li><strong>The benefit:</strong> The next time you run the same or a similar task in that specific repository, Jules will reference its memory to better anticipate your needs and follow your established patterns, leading to more accurate results with less guidance.</li>
+<li><strong>Settings:</strong> You can toggle memory on or off for the repo in the repo settings page under “Knowledge”</li>
+</ul>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-20">
+            <div class="module-header">
+                <h2>Tell Jules exactly what file to work on using file selector</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2025-09-29</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Tell Jules exactly what file to work on using file selector</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">September 29, 2025</p> <p><img src="https://jules.google/docs/_astro/fileselector.7WfNoQbn_26CxIH.webp" alt="File Selector" loading="lazy" decoding="async" fetchpriority="auto" width="1498" height="754"></p>
+<p>You can now tell Jules exactly which files to work with for any given task. Use the new file selector to easily and precisely reference specific files.</p>
+<p>This removes ambiguity and gives you more granular control over Jules’s actions, helping to tighten the context for your task.</p>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-21">
+            <div class="module-header">
+                <h2>Jules Acts on PR Feedback</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2025-09-23</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Jules Acts on PR Feedback</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">September 23, 2025</p> <p><img src="https://jules.google/docs/_astro/changelog-pr-comments.Cfoy5hKj_13iNLU.webp" alt="Jules responding to a PR comment" loading="lazy" decoding="async" fetchpriority="auto" width="2380" height="1338"></p>
+<p>Jules is now able to read and respond to your comments on pull requests!</p>
+<p>When you start a review, Jules will add a 👀 emoji to each comment to let you know it’s been read. Based on your feedback, Jules will then push a commit with the requested changes.</p>
+<p>For more control, you can switch to <strong>Reactive Mode</strong> in your <a href="https://jules.google.com/settings">global Jules UI settings</a>. In this mode, Jules will only act on comments where you specifically mention <code dir="auto">@Jules</code>.</p>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-22">
+            <div class="module-header">
+                <h2>All Hands on Deck!</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2025-09-19</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >All Hands on Deck!</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">September 19, 2025</p> <p><img src="https://jules.google/docs/_astro/changelog-019.C2qW8uJn_2gscRb.webp" alt="image upload" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="675"></p>
+<p>Ahoy, mateys! To celebrate International Talk Like a Pirate Day, we’ve given Jules a temporary map to the treasure.</p>
+<ul>
+<li>
+<p>Jules Speaks Pirate: You’ll find your AI agent’s responses are a bit more… swashbuckling… for today only.</p>
+</li>
+<li>
+<p>Same Great Logic: Fear not! Beneath the eyepatch and Jolly Roger, it’s the same powerful coding engine ready to help you plunder that backlog and send bugs to Davy Jones’ locker.</p>
+</li>
+</ul>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-23">
+            <div class="module-header">
+                <h2>Image upload</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2025-09-09</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Image upload</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">September 9, 2025</p> <p><img src="https://jules.google/docs/_astro/image-upload.CXDvQ88D_Z1Yu1C4.webp" alt="image upload" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="675"></p>
+<p>You can now upload images when creating a task in Jules. Use this to show frontend bugs, design inspiration, UI mocks, or any visual context you want Jules to consider while generating code.</p>
+<p>For now:</p>
+<ul>
+<li>Only JPEG and PNG formats are supported.</li>
+<li>You can uplaod as many images as you want, as long as the total size is under 5MB.</li>
+<li>Image upload is only supported at task creation (we’re working on enabling it for follow-up prompts soon).</li>
+</ul>
+<p>Note: If your task involves using assets (e.g. logos) directly in code, those must still be committed to your GitHub repo.</p>
+<p><a href="https://jules.google/docs/running-tasks/">Read more</a> about Jules image support.</p>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-24">
+            <div class="module-header">
+                <h2>Stacked Diff</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2025-09-04</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Stacked Diff</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">September 4, 2025</p> <p><img src="https://jules.google/docs/_astro/changelog-017-fade.BsxUDclU_V57d9.webp" alt="Stacked Diff" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="675"></p>
+<p>To improve the code review experience, we’ve introduced a new stacked layout for the diff viewer. This change displays diffs for multiple files vertically on a single screen. The stacked view makes it easier to see related changes across your codebase at a glance, providing better context and speeding up your review process.</p>
+<p>Changes:</p>
+<ul>
+<li>The diff viewer now stacks file changes vertically by default</li>
+<li>You can also toggle back to the previous tabbed diff viewer</li>
+</ul>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-25">
+            <div class="module-header">
+                <h2>Improved Jules Critic</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2025-09-03</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Improved Jules Critic</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">September 3, 2025</p> <p><img src="https://jules.google/docs/_astro/changelog-016.DcExNlSl_1EY8iB.webp" alt="Improved Critic" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="675"></p>
+<p>We’ve shipped significant improvements to the Jules critic agent, making its feedback more insightful and reliable. To increase transparency and give you more insight into its evaluation process, you can now see the critic’s real-time analysis as it works.</p>
+<p>Changes:</p>
+<ul>
+<li>The critic’s thought process is now visible in the UI, showing its step-by-step evaluation of the code in real-time.</li>
+<li>The critic’s now incorporates more contextual information when making decisions, leading to more accurate and relevant feedback on potential bugs and logic flaws.</li>
+</ul>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-26">
+            <div class="module-header">
+                <h2>Jules Sample Prompts</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2025-09-02</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Jules Sample Prompts</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">September 2, 2025</p> <p><img src="https://jules.google/docs/_astro/changelog-015.CXL47v6I_1sTQ7S.webp" alt="Sample Prompts" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="675"></p>
+<p>To help new users get started with Jules, we’ve added sample prompts to the home page. These static prompts provide examples of how to use Jules and can be added to the text box with a single click.</p>
+<p>Changes:</p>
+<ul>
+<li>Sample prompts are now displayed on the home page for all users.</li>
+<li>Clicking on a sample prompt will add the text of the prompt to the input box.</li>
+</ul>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-27">
+            <div class="module-header">
+                <h2>Render images in the diff viewer</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2025-08-22</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Render images in the diff viewer</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">August 22, 2025</p> <p><img src="https://jules.google/docs/_astro/imagesdiffviewer.CfwMUfrJ_2uxzG0.webp" alt="Images in diff viewer" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="675"></p>
+<p>Jules now intelligently renders images within the diff viewer, providing an immediate visual context for your modifications.</p>
+<p>This means:</p>
+<ul>
+<li>Instant Visual Feedback: When Jules generates images (like charts, diagrams, or web UI screenshots), you’ll see the actual image in the diff, not just its code representation.</li>
+<li>Streamlined Workflow: No need to switch between tools or download files to see the results. Jules keeps everything in one place.</li>
+</ul>
+<p>Try it out! Ask Jules to render an output, like a graph based on data, and commit it to your repository. You’ll be able to see the generated image seamlessly within your diff viewer.</p>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-28">
+            <div class="module-header">
+                <h2>Increasing the VM Size to 20GB</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2025-08-151</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Increasing the VM Size to 20GB</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">August 15, 2025</p> <p>We heard your feedback about running into disk space limits on larger projects. To address this, we’ve significantly increased the available disk space in the Jules VM to 20GB. This provides more room for large dependencies, build artifacts, and complex repositories, reducing disk-related failures so Jules can tackle bigger tasks. Happy Julesing!</p>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-29">
+            <div class="module-header">
+                <h2>Export at any time</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2025-08-15</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Export at any time</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">August 15, 2025</p> <p><img src="https://jules.google/docs/_astro/exportatanytime.CJ8dxdjQ_ZTi5Nq.webp" alt="Export" loading="lazy" decoding="async" fetchpriority="auto" width="1504" height="364"></p>
+<p>You’re now in full control of when your code gets to GitHub. No need to wait for a task to finish or ask Jules to do it for you. At any point during a task, just click the GitHub icon in the top right to publish the current work-in-progress as a new branch or open a pull request. This gives you more flexibility and control to review, test, or take over whenever you’re ready.</p>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-30">
+            <div class="module-header">
+                <h2>Critic Agent</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2025-08-083</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Critic Agent</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">August 8, 2025</p> <p><img src="https://jules.google/docs/_astro/critic.M-N27lZA_ZAPjfu.webp" alt="Critic Agent" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="675"></p>
+<p>Great developers don’t just write code, they question it. And now, so does Jules. We’ve built the Jules critic agent to ensure that every line of code isn’t just functional, but robust, secure, and efficient. It acts as an internal peer reviewer, challenging every proposed change to elevate the quality of the final output.</p>
+<p>Some high level notes:</p>
+<ul>
+<li>
+<p><strong>Critic-augmented generation:</strong> The Jules critic is integrated directly into the generation process. Every proposed change undergoes adversarial review before completion.</p>
+</li>
+<li>
+<p><strong>Improved code quality:</strong> The critic flags subtle bugs, missed edge cases, and inefficient code. Jules then uses this feedback to improve the patch in real-time.</p>
+</li>
+<li>
+<p><strong>A new kind of review:</strong> The critic is not just another linter or test. It understands the intent and context behind code, similar to a human peer reviewer.</p>
+</li>
+<li>
+<p><strong>Built on research:</strong> This feature draws on research into multi-step, tool interactive critiquing and actor-critic reinforcement learning, where an “actor” generates and a “critic” evaluates.</p>
+</li>
+</ul>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-31">
+            <div class="module-header">
+                <h2>Interactive Plan</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2025-08-082</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Interactive Plan</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">August 8, 2025</p> <p><img src="https://jules.google/docs/_astro/interactiveplan.BQJ_-8Fr_2aajzt.webp" alt="Post Beta" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="675"></p>
+<p>Meet Interactive Plan. Instead of jumping straight to the solution, Jules will now read your codebase, ask clarifying questions, and work with you to refine the plan. This collaborative approach gives you more control and ensures you’re on the same page, leading to higher-quality code and a more reliable solution.</p>
+<p>In summary:</p>
+<ul>
+<li>Trigger the interactive plan from the dropdown when you start a task</li>
+<li>Jules will start a brainstorm with you and ask clarifying questions</li>
+</ul>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-32">
+            <div class="module-header">
+                <h2>Jules can surf the web</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2025-08-081</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Jules can surf the web</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">August 8, 2025</p> <p><img src="https://jules.google/docs/_astro/websearch.DYAsPzEM_Z1T1Fgu.webp" alt="Post Beta" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="675"></p>
+<p>Jules can now proactively search the web for relevant content, documentation, or code snippets to help complete your tasks. This means Jules can get the information it needs, resulting in more accurate and successful task completion.</p>
+<p>In Summary:</p>
+<ul>
+<li>Jules can find the latest documentation for dependencies/libraries you’re using</li>
+<li>Jules can proactively find examples or code snippets that can help inform its implementation</li>
+</ul>
+<p><strong>Note</strong>: web search works best when working on technical documentation. Queries like: “What is the latest news today?” are not supported.</p>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-33">
+            <div class="module-header">
+                <h2>Jules can test web-apps and show you the results</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2025-08-07</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Jules can test web-apps and show you the results</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">August 7, 2025</p> <p><img src="https://jules.google/docs/_astro/computeruse.DsMoFBka_14OxNJ.webp" alt="Post Beta" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="675"></p>
+<p>Next time you are working on a front end project with Jules, ask it to verify its work and it’ll render the website and send you back a screenshot!</p>
+<ul>
+<li>Ask Jules to complete a web development task and to verify the front end</li>
+<li>Jules will send you a screenshot of the front end along with any code changes</li>
+<li>The default Jules base image now includes Playwright for front end testing</li>
+<li>Users can also add images in the form of public URLs for Jules to use as input</li>
+</ul>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-34">
+            <div class="module-header">
+                <h2>Jules is out of beta!</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2025-08-06</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Jules is out of beta!</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">August 6, 2025</p> <p><img src="https://jules.google/docs/_astro/post-beta.CHZ_x9Mj_Z1PiJdY.webp" alt="Post Beta" loading="lazy" decoding="async" fetchpriority="auto" width="2008" height="1102"></p>
+<p>Today we are thrilled to announce that Jules is no longer in beta! Since launch just two months ago, Jules has passed over 140k public commits. Thank you to our amazing beta users for all your support and feedback.</p>
+<p>In addition, we’re launching our pricing plans to unlock higher task limits, along with a bunch of quality improvements in the Jules app and agent. Here are the details:</p>
+<ul>
+<li>Get higher task limits through the Google AI Pro and Ultra plans. More details at <a href="./../usage-limits">Limits and Plans</a>.</li>
+<li>Jules now uses the power of Gemini 2.5 thinking when creating its plan, resulting in higher quality plans and more complete tasks</li>
+<li>Numerous bug fixes so Jules gets stuck less, and is better at following your instructions in agents.md</li>
+</ul>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-35">
+            <div class="module-header">
+                <h2>Environment snapshots for faster tasks</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2025-08-05</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Environment snapshots for faster tasks</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">August 5, 2025</p> <p><img src="https://jules.google/docs/_astro/envsnapshot.Da7EUEdt_2vFn0C.webp" alt="Env Snapshot" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="675"></p>
+<p>Jules now creates a snapshot of your environment when you add environment setup scripts. For complicated environment, users should see faster and more consistent task execution.</p>
+<p>In summary:</p>
+<ul>
+<li>Jules will now snapshot your environment when you provide an environment setup script</li>
+<li>Snapshots are loaded automatically next time you run a task</li>
+<li>This provides for faster task startups, especially for complex environments</li>
+<li>You can find environment configuration by clicking the “codebase” in the left hand panel, or by clicking the “configure environment” button in the task pane.</li>
+</ul>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-36">
+            <div class="module-header">
+                <h2>Open A PR directly from Jules</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2025-08-04</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Open A PR directly from Jules</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">August 4, 2025</p> <p><img src="https://jules.google/docs/_astro/openapr.B4vE52yX_Z1M4K0M.webp" alt="Open a PR" loading="lazy" decoding="async" fetchpriority="auto" width="1201" height="675"></p>
+<p>Closing the loop from task to merge 🤝</p>
+<p>Jules can now open a pull request directly from the UI.
+After a task completes, just use the new dropdown next to the ‘Publish Branch’ button to open a PR. Jules will request to merge the newly published branch into main, streamlining your entire workflow. Less context switching, faster merging.</p>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-37">
+            <div class="module-header">
+                <h2>Added Bun runtime support</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2025-07-18</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Added Bun runtime support</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">July 18, 2025</p> <p><img src="https://jules.google/docs/_astro/jules_3bun.CJ2DViw__2wPAMA.webp" alt="Bun" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="675"></p>
+<p>Jules now supports <a href="https://bun.sh/">Bun</a>. You can run tasks using Bun out of the box, no extra setup required. This expands compatibility for projects that use Bun instead of Node.</p>
+<p><a href="https://jules.google.com/docs/environment/">Read more</a> about the jules base image and what tooling works with Jules.</p>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-38">
+            <div class="module-header">
+                <h2>Improved task controls and other 💅 UI delight</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2025-07-03</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Improved task controls and other 💅 UI delight</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">July 3, 2025</p> <p><img src="https://jules.google/docs/_astro/polish-tasks-changelog.Bzf_pBWz_2vjs48.webp" alt="Task controls" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="675"></p>
+<ul>
+<li>Pause, resume, and delete tasks—without losing your sense of place. Available from sidebar and repo view. You can even quickly copy task urls!</li>
+<li>Non-urgent task icons are now more recessive</li>
+<li>Certain hover states—which did not look good—have been toned back.</li>
+<li>System messages have more consistent padding and borders</li>
+</ul>
+<p><a href="https://jules.google.com/docs/running-tasks/">Learn more about running a task.</a></p>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-39">
+            <div class="module-header">
+                <h2>Jules now listens to GitHub issues</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2025-06-26</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Jules now listens to GitHub issues</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">June 26, 2025</p> <p><img src="https://jules.google/docs/_astro/assign-to-jules.DFMcEzUY_ivwm4.webp" alt="Assign to Jules" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="675"></p>
+<p>Add the label ‘jules’ to any GitHub issue to start a task in Jules. That’s it—label on, task live.</p>
+<p>How to summon Jules:</p>
+<ul>
+<li>Open a GitHub issue.</li>
+<li>Click the gear next to “Labels”.</li>
+<li>Add the label ‘jules.’</li>
+</ul>
+<p>Make sure the Jules GitHub App has access to your repo. After that, Jules takes it from there. <a href="https://jules.google/docs/running-tasks/">Read more about running tasks in Jules</a>!</p>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-40">
+            <div class="module-header">
+                <h2>Jules Agent Update: Faster, Smarter, More Reliable</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2025-06-20</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Jules Agent Update: Faster, Smarter, More Reliable</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">June 20, 2025</p> <p><img src="https://jules.google/docs/_astro/agents-md-support.COimRein_2qTvQj.webp" alt="Jules environment updates" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="675"></p>
+<p>We’ve shipped a big upgrade to the Jules agent under the hood.</p>
+<p>What’s new:</p>
+<ul>
+<li><strong>Smarter context.</strong> Jules reads from AGENTS.md if it’s in your repo.</li>
+<li><strong>Improved performance.</strong> Tasks now complete faster—no numbers to share just yet, but you’ll feel it.</li>
+<li><strong>Significantly reduced punting.</strong> We tightened the loop to keep Jules moving forward.</li>
+<li><strong>More reliable setup.</strong> If you’ve added an environment setup script, Jules now runs it consistently.</li>
+<li><strong>Better test habits.</strong> Jules is more likely to write and run tests on its own.</li>
+</ul>
+<p>Check out the <a href="https://jules.google/docs/">Getting Started</a> guide to learn more about AGENTS.md support.</p>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-41">
+            <div class="module-header">
+                <h2>Modernized base environment and updated toolchains</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2025-06-18</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Modernized base environment and updated toolchains</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">June 18, 2025</p> <p><img src="https://jules.google/docs/_astro/changelog-env-update.C-4Kcp7e_Hgx3E.webp" alt="Jules environment updates" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="675"></p>
+<p>We’ve overhauled the Jules development environment to move beyond the default Ubuntu 24.04 LTS packages. This includes:</p>
+<ul>
+<li>Explicitly installing newer versions of key toolchains like Rust, Node, and Python, addressing long-standing version issues.</li>
+<li>Adding finer-grained control over installation steps via custom scripts instead of relying solely on apt.</li>
+<li>Introducing support for multiple runtimes, improved isolation, and version pinning to reduce drift and better match developer expectations.</li>
+</ul>
+<p>These changes unblock several issues developers encountered with outdated dependencies and improve alignment with modern project requirements.</p>
+<p><a href="https://jules.google/docs/environment/">Read about the Jules environment setup to learn more about what’s pre-installed.</a></p>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-42">
+            <div class="module-header">
+                <h2>Customization and Efficiency Enhancements</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2025-06-06</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Customization and Efficiency Enhancements</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">June 6, 2025</p> <p><img src="https://jules.google/docs/_astro/jules-copy-paste-download.Bh0k6Pa9_ZF9tR6.webp" alt="Jules code view" loading="lazy" decoding="async" fetchpriority="auto" width="1200" height="675"></p>
+<p><strong>Performance upgrades:</strong> Enjoy a smoother, faster Jules experience with recent under-the-hood improvements.</p>
+<p><strong>Quickly copy and download code:</strong> New copy and download buttons are now available in the code view pane, making it easier to grab your code directly from Jules.</p>
+<p><strong>Stay focused with task modals:</strong> Initiate multiple tasks seamlessly through a new modal option, allowing you to keep your context and workflow intact. <a href="https://jules.google/docs/tasks-repos/">Learn more</a> about kicking off tasks.</p>
+<p><strong>Adjustable code panel:</strong> Customize your workspace by adjusting the width of the code panel to your preferred viewing experience.</p>
+<p><a href="https://jules.google/docs/code/">Check out the docs</a> to learn more about how to download code that Jules writes.</p>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-43">
+            <div class="module-header">
+                <h2>A faster, smoother and more reliable Jules</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2025-05-30</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >A faster, smoother and more reliable Jules</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">May 30, 2025</p> <p>This week, our focus has been on improving reliability, fixing our GitHub integration, and scaling capacity.</p>
+<p><strong>Here’s what’s we shipped:</strong></p>
+<ul>
+<li>Updated our limits to 60 tasks per day, 5 concurrent.</li>
+<li>We substantially improved the reliability of the GitHub sync. Export to GitHub should also be fixed on previously created tasks.</li>
+<li>We’ve decreased the number of failure cases by 2/3</li>
+</ul>
+<p>Learn more <a href="./../usage-limits">about usage limits.</a></p>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-44">
+            <div class="module-header">
+                <h2>Improving Stablity</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2025-05-22</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Improving Stablity</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">May 22, 2025</p> <p>We’ve been heads down improving stability and fixing bugs—big and small—to make Jules faster, smoother, and more reliable for you.</p>
+<p><strong>Here’s what’s fixed:</strong></p>
+<ul>
+<li>Upgraded our queuing system and added more compute to reduce wait times during peak usage</li>
+<li>Publish Branch button is now part of the summary UI in the activity feed so it’s easier to find</li>
+<li>Bug vixes for task status and mobile</li>
+</ul>
+<p><a href="https://jules.google.com/docs/code/#pushing-to-github">Learn more</a> about how to publish a branch on GitHub.</p>  </div>   </div> </div>
+        </div>
+
+        <div class="page-container page-break" id="page-45">
+            <div class="module-header">
+                <h2>Jules is here</h2>
+                <div style="font-size: 8.5pt; color: #6b7280;">Fuente: https://jules.google/docs/changelog/2025-05-19</div>
+            </div>
+                <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" >Jules is here</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content">  <p class="date astro-w6qo3ggy">May 19, 2025</p> <p><img src="https://jules.google/docs/_astro/jules-changelog-og-image.CksfgUSk_Zv5umR.webp" alt="Jules dashboard" loading="lazy" decoding="async" fetchpriority="auto" width="2246" height="1196"></p>
+<p>Today, we’re launching <a href="https://jules.google.com" target="_blank" rel="noopener"><strong>Jules,</strong></a> a new AI coding agent.</p>
+<p>Jules helps you move faster by working autonomously on tasks in your GitHub repo. It can fix bugs, update dependencies, migrate code, and add new features.</p>
+<p>Once you give Jules a task, it spins up a fresh dev environment in a VM, installs dependencies, writes tests, makes the changes, runs the tests, and opens a pull request. Jules shows its work as it makes progress, so you never have to guess what code it’s writing, or what it’s thinking.</p>
+<p><strong>What Jules can do today</strong></p>
+<ul>
+<li>Fix bugs with test verified patches</li>
+<li>Handle version bumps and dependency upgrades</li>
+<li>Perform scoped code transformations</li>
+<li>Migrate code across languages or frameworks</li>
+<li>Ship isolated, scoped, features</li>
+<li>Open PRs with runnable code and test results</li>
+</ul>
+<p><a href="/">Get started with the Jules documentation</a>, and visit <a href="https://jules.google.com" target="_blank" rel="noopener">jules.google.com</a> to run your first Jules task.</p>  </div>   </div> </div>
+        </div>
+
+    </div>
+
+    <div class="footer-note">
+        Documentación de Jules Agent - Módulo 5: Registro de Cambios (Changelog)
+    </div>
+
+</body>
+</html>
