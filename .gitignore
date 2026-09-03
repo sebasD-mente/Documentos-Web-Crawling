@@ -1,6 +1,6 @@
 gcp_docs_data.json
 *.html
-*.pdf
 test_inspect.py
 scraped_codelab.json
+preview_screenshot.png
 __pycache__/
